@@ -1,6 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.hackathon.fries.myclass">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
         android:name=".app.AppController"
         android:allowBackup="true"
@@ -24,6 +26,10 @@
 
         <activity
             android:name=".RegisterActivity"
+            android:label="@string/register"></activity>
+
+        <activity
+            android:name=".EditProfileActivity"
             android:label="@string/register"></activity>
     </application>
 
