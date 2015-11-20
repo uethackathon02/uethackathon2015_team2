@@ -18,6 +18,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.hackathon.fries.myclass.fragment.LopFragment;
+import com.hackathon.fries.myclass.fragment.ThoiKhoaBieuFragment;
 import com.hackathon.fries.myclass.fragment.TimelineFragment;
 import com.hackathon.fries.myclass.helper.SQLiteHandler;
 import com.hackathon.fries.myclass.helper.SessionManager;
@@ -32,6 +33,7 @@ public class MainActivity extends AppCompatActivity
     private static final int REQUEST_CODE_EDIT = 1234;
     private static final String TAG = "MainActivity";
     private LopFragment lopFragment = new LopFragment();
+    private ThoiKhoaBieuFragment thoiKhoaBieuFragment = new ThoiKhoaBieuFragment();
 
     private SessionManager session;
     private SQLiteHandler sqlite;
@@ -193,6 +195,7 @@ public class MainActivity extends AppCompatActivity
                 break;
             case R.id.nav_thoikhoabieu:
                 //replace fragment moi
+                getFragmentManager().beginTransaction().replace(R.id.container, thoiKhoaBieuFragment).commit();
                 toolbar.setTitle("Thời khoá biểu");
                 break;
             case R.id.nav_updateAccount:

@@ -36,4 +36,7 @@
     <string name="hint_mssv">Mã số sinh viên</string>
     <string name="updateAccount">Cập nhật tài khoản</string>
 
+
+    <string name="thoi_khoa_bieu">Thời khóa biểu</string>
+
 </resources>
