@@ -1,6 +1,7 @@
 package com.hackathon.fries.myclass.adapter;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,8 +17,29 @@ import java.util.Random;
  * Created by TMQ on 20-Nov-15.
  */
 public class TableSubjectAdapter extends BaseAdapter{
-    private ArrayList<ItemLopMonHoc> listSuject;
-    private ArrayList<ItemLopMonHoc> listSubjectInTable;
+    private static final String TAG = "TableSubjectAdapter";
+    // So item toi da trong bang Thoi khoa bieu
+    private static final int MAX_SIZE = 77;
+    // 6 ngay trong tuan <=> 6 cot
+    private static final int SIZE_COL = 6;
+    // Danh sach cac mau dung de danh dau cac mon hoc
+    private static final int [] COLOR_ITEM = new int[] {
+            R.color.bg_item_subject_0,
+            R.color.bg_item_subject_1,
+            R.color.bg_item_subject_2,
+            R.color.bg_item_subject_3,
+            R.color.bg_item_subject_4,
+            R.color.bg_item_subject_5,
+            R.color.bg_item_subject_6,
+            R.color.bg_item_subject_7,
+            R.color.bg_item_subject_8,
+            R.color.bg_item_subject_9,
+    };
+
+
+
+    private int [] listSubjectInTable;
+    private ArrayList<ItemLopMonHoc> listSubject;
     private Context mContext;
     private LayoutInflater lf;
 
@@ -28,30 +50,45 @@ public class TableSubjectAdapter extends BaseAdapter{
     }
 
     private void getSubjectData(){
-        listSuject = new ArrayList<>();
-        listSubjectInTable = new ArrayList<>();
-//        listSuject.add(new ItemLopMonHoc("Xác suất thống kê", "MATH11111", "Giang vien",));
-//        listSuject.add(null);
-//        listSuject.add(new ItemLopMonHoc("Toán rời rạc", "MATH11111", "Giang vien", 100));
-//        listSuject.add(null);
-//        listSuject.add(null);
-//        listSuject.add(null);
-//        listSuject.add(new ItemLopMonHoc("Lý thuyết thông tin", "MATH11111", "Giang vien", 100));
-//        listSuject.add(null);
-//        listSuject.add(null);
+        listSubject = new ArrayList<>();
 
-        listSubjectInTable.add(new ItemLopMonHoc("Xác suất thống kê", "MAT1111 1", "303 G2", "Lê Phê Đô", 3, 3, 90, 1));
-        listSubjectInTable.add(new ItemLopMonHoc("Toán rời rạc", "MAT2222 3", "313 G2", "Đặng Thanh Hải", 3, 3, 90, 1));
+        listSubject.add(new ItemLopMonHoc("Xác suất thống kê", "MAT1111 1", "303 G2", "Lê Phê Đô", 3, 3, 90, 1));
+        listSubject.add(new ItemLopMonHoc("Toán rời rạc", "MAT2222 3", "313 G2", "Đặng Thanh Hải", 16, 3, 90, 1));
+        listSubject.add(new ItemLopMonHoc("Lý thuyết thông tin", "INT2222 3", "313 G2", "Đặng Thanh Hải", 22, 2, 90, 1));
+        listSubject.add(new ItemLopMonHoc("Lập trình hướng đối tượng", "INT1111 1", "303 G2", "Lê Phê Đô", 28, 2, 90, 1));
+
+        convertSubjectToTable();
+    }
+    private void convertSubjectToTable(){
+        listSubjectInTable = new int[MAX_SIZE];
+        for (int i=0; i<MAX_SIZE; i++){
+            listSubjectInTable[i] = -1;
+        }
+        for ( int i = 0; i<listSubject.size(); i++){
+            ItemLopMonHoc item = listSubject.get(i);
+            int viTri = item.getViTri();    // Lay vi tri cua mon hoc
+            int soTiet = item.getSoTiet();
+
+            for (int j=0; j<soTiet; j++){
+                int x = (viTri+j) / 10;
+                int y = (viTri+j - 1) % 10;
+                if (y>=5) y++;
+
+                int viTriMoi = y*SIZE_COL + x;
+
+                listSubjectInTable[viTriMoi] = i;
+            }
+        }
     }
 
     @Override
     public int getCount() {
-        return listSuject.size();
+        return MAX_SIZE;
     }
 
     @Override
     public ItemLopMonHoc getItem(int position) {
-        return listSuject.get(position);
+        return listSubject.get(listSubjectInTable[position]);
     }
 
     @Override
@@ -65,12 +102,13 @@ public class TableSubjectAdapter extends BaseAdapter{
             view = lf.inflate(R.layout.item_subject_in_table, null);
         }
 
-        ItemLopMonHoc item = listSuject.get(position);
-        if (item == null) return view;
+        if (listSubjectInTable[position] == -1) return view;
+
+        ItemLopMonHoc item = listSubject.get(listSubjectInTable[position]);
 
         TextView txtName = (TextView)   view.findViewById(R.id.txtItemNameSubject);
-        txtName.setText(item.getTen());
-        txtName.setBackgroundColor(new Random().nextInt());
+        txtName.setText(item.getTenVietTat());
+        txtName.setBackgroundColor(mContext.getResources().getColor(COLOR_ITEM[listSubjectInTable[position]]));
 
         return view;
     }
