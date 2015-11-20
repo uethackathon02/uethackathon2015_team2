@@ -1,6 +1,5 @@
 package com.hackathon.fries.myclass.fragment;
 
-
 import android.app.Fragment;
 import android.content.Context;
 import android.os.Bundle;
