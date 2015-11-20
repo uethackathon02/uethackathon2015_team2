@@ -149,14 +149,20 @@ public class LoginActivity extends Activity {
 //                        String name = user.getString("name");
                         String email = user.getString("email");
                         String created_at = user.getString("created_at");
-//                        String lop = user.getString("lop");
-//                        String mssv = user.getString("mssv");
-//                        String type = user.getString("type");
+                        String lop = user.getString("lop");
+                        String mssv = user.getString("mssv");
+                        String type = user.getString("type");
 
-                        String name = "";
-                        String lop = "K58CLC";
-                        String mssv = "13020285";
-                        String type = "Sinh viên";
+                        String name = "Không tên";
+//                        String lop = "K58CLC";
+//                        String mssv = "13020285";
+//                        String type = "Sinh viên";
+
+                        if (type.equalsIgnoreCase("student")){
+                            type = "Sinh viên";
+                        } else if(type.equalsIgnoreCase("teacher")){
+                            type = "Giảng viên";
+                        }
 
 
                         Log.i(TAG, "login: " + name);
