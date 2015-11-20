@@ -12,7 +12,7 @@ import org.w3c.dom.Text;
 /**
  * Created by Tdh4vn on 11/21/2015.
  */
-public class ItemPostHolder extends RecyclerView.ViewHolder {
+public class ItemPostHolder extends AbstactHolder {
     public ItemPostHolder(View itemView) {
         super(itemView);
         imgAvatar = (ImageView) itemView.findViewById(R.id.imgAvatar);
@@ -20,15 +20,23 @@ public class ItemPostHolder extends RecyclerView.ViewHolder {
         txtContent = (TextView) itemView.findViewById(R.id.tv_content);
         imgAvatarLastPost = (ImageView) itemView.findViewById(R.id.imgAvatarLastPost);
         txtNameLastPost = (TextView) itemView.findViewById(R.id.txtNameLastComment);
-        txtCommentLastPost = (TextView) itemView.findViewById(R.id.txtNameLastComment);
+        txtCommentLastPost = (TextView) itemView.findViewById(R.id.txtContentLastComment);
+        txtCountLike = (TextView) itemView.findViewById(R.id.txtCountLike);
+        txtCountComment = (TextView) itemView.findViewById(R.id.txtCountComment);
     }
-
     private ImageView imgAvatar;
     private TextView txtTitle;
     private TextView txtContent;
     private ImageView imgAvatarLastPost;
     private TextView txtNameLastPost;
     private TextView txtCommentLastPost;
+    private TextView txtCountLike;
+    private TextView txtCountComment;
+
+    public int getViewHolderType() {
+        int viewHolderType = 1;
+        return viewHolderType;
+    }
 
     public ImageView getImgAvatar() {
         return imgAvatar;
@@ -76,5 +84,21 @@ public class ItemPostHolder extends RecyclerView.ViewHolder {
 
     public void setTxtCommentLastPost(TextView txtCommentLastPost) {
         this.txtCommentLastPost = txtCommentLastPost;
+    }
+
+    public TextView getTxtCountLike() {
+        return txtCountLike;
+    }
+
+    public void setTxtCountLike(TextView txtCountLike) {
+        this.txtCountLike = txtCountLike;
+    }
+
+    public TextView getTxtCountComment() {
+        return txtCountComment;
+    }
+
+    public void setTxtCountComment(TextView txtCountComment) {
+        this.txtCountComment = txtCountComment;
     }
 }
