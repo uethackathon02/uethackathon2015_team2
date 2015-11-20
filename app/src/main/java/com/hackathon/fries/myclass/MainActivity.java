@@ -18,6 +18,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.hackathon.fries.myclass.fragment.LopFragment;
+import com.hackathon.fries.myclass.fragment.ThoiKhoaBieuFragment;
 import com.hackathon.fries.myclass.fragment.TimelineFragment;
 import com.hackathon.fries.myclass.helper.SQLiteHandler;
 import com.hackathon.fries.myclass.helper.SessionManager;
@@ -32,6 +33,7 @@ public class MainActivity extends AppCompatActivity
     private static final int REQUEST_CODE_EDIT = 1234;
     private static final String TAG = "MainActivity";
     private LopFragment lopFragment = new LopFragment();
+    private ThoiKhoaBieuFragment thoiKhoaBieuFragment = new ThoiKhoaBieuFragment();
 
     private SessionManager session;
     private SQLiteHandler sqlite;
@@ -107,7 +109,7 @@ public class MainActivity extends AppCompatActivity
     }
 
     private void hideAllFragment() {
-        getFragmentManager().beginTransaction().hide(lopFragment).commit();
+//        getFragmentManager().beginTransaction().hide(lopFragment).commit();
     }
 
     private void showLopFragment() {
@@ -183,24 +185,26 @@ public class MainActivity extends AppCompatActivity
                 toolbar.setTitle("Nhóm");
                 break;
             case R.id.nav_setting:
-                hideAllFragment();
+                //replace fragment moi
+//                hideAllFragment();
                 toolbar.setTitle("Cài đặt");
                 break;
             case R.id.nav_share:
-                hideAllFragment();
+//                hideAllFragment();
                 toolbar.setTitle("Chia sẻ");
                 break;
             case R.id.nav_thoikhoabieu:
-                hideAllFragment();
+                //replace fragment moi
+                getFragmentManager().beginTransaction().replace(R.id.container, thoiKhoaBieuFragment).commit();
                 toolbar.setTitle("Thời khoá biểu");
                 break;
             case R.id.nav_updateAccount:
-                hideAllFragment();
+//                hideAllFragment();
                 startEditActivity();
                 toolbar.setTitle(R.string.app_name);
                 break;
             case R.id.nav_logout:
-                hideAllFragment();
+//                hideAllFragment();
                 logout();
                 break;
         }

@@ -3,6 +3,7 @@ package com.hackathon.fries.myclass;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputType;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -33,6 +34,8 @@ public class EditProfileActivity extends Activity {
         edtName.setText(mIntent.getStringExtra("name"));
         edtEmail.setText(mIntent.getStringExtra("email"));
         edtLopKhoaHoc.setText(mIntent.getStringExtra("lop"));
+
+        edtEmail.setInputType(InputType.TYPE_NULL);
 
         btnDone = (Button) findViewById(R.id.btn_editdone);
 
