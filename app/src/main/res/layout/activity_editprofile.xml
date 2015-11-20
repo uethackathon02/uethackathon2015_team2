@@ -53,6 +53,7 @@
         android:id="@+id/edt_editemail"
         android:layout_marginBottom="10dp"
         android:padding="10dp"
+        android:textColor="@android:color/darker_gray"
         android:inputType="textEmailAddress"
         android:background="@android:color/white"
         android:textColorHint="@color/input_login_hint"

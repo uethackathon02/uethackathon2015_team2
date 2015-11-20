@@ -81,7 +81,6 @@ public class EditProfileActivity extends Activity {
                 if (!name.equalsIgnoreCase("") && !lop.equalsIgnoreCase("")) {
 
                     updateUser(name, lop, mssv, edtEmail.getText().toString());
-                    Toast.makeText(getApplicationContext(), "Cập nhật thông tin thành công :)", Toast.LENGTH_LONG).show();
                 }
             }
         });
@@ -131,6 +130,12 @@ public class EditProfileActivity extends Activity {
                         Log.i(TAG, "update mssv: " + mssv);
                         Log.i(TAG, "update type: " + type);
 
+                        if (type.equalsIgnoreCase("student")){
+                            type = "Sinh viên";
+                        } else if (type.equalsIgnoreCase("teacher")){
+                            type = "Giảng viên";
+                        }
+
                         // Inserting row in users table
                         db.deleteUsers();
                         db.addUser(name, email, uid, created_at, lop, mssv, type);
@@ -143,7 +148,7 @@ public class EditProfileActivity extends Activity {
                         mIntent.putExtra("mssv", mssv);
                         mIntent.putExtra("type", type);
                         setResult(RESULT_OK, mIntent);
-
+                        Toast.makeText(getApplicationContext(), "Cập nhật thông tin thành công :)", Toast.LENGTH_LONG).show();
                         finish();
                     } else {
 
@@ -153,12 +158,11 @@ public class EditProfileActivity extends Activity {
                         Toast.makeText(getApplicationContext(),
                                 errorMsg, Toast.LENGTH_LONG).show();
                         setResult(RESULT_CANCELED);
-                        finish();
+//                        finish();
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-
             }
         }, new Response.ErrorListener() {
 
