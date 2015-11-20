@@ -4,16 +4,26 @@ package com.hackathon.fries.myclass.adapter;
  * Created by TooNies1810 on 11/20/15.
  */
 public class ItemTimeLine {
+    private String name;
+    private String ava;
     private String content;
     private int like;
-    private int comment;
     private boolean isConfirmByTeacher;
 
-    public ItemTimeLine(String content, int like, int comment, boolean isConfirmByTeacher) {
+    public ItemTimeLine(String name, String ava, String content, int like, boolean isConfirmByTeacher) {
+        this.name = name;
+        this.ava = ava;
         this.content = content;
         this.like = like;
-        this.comment = comment;
         this.isConfirmByTeacher = isConfirmByTeacher;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getAva() {
+        return ava;
     }
 
     public String getContent() {
@@ -30,14 +40,6 @@ public class ItemTimeLine {
 
     public void setLike(int like) {
         this.like = like;
-    }
-
-    public int getComment() {
-        return comment;
-    }
-
-    public void setComment(int comment) {
-        this.comment = comment;
     }
 
     public boolean isConfirmByTeacher() {

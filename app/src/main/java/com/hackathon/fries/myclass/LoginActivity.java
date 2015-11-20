@@ -162,6 +162,7 @@ public class LoginActivity extends Activity {
                             type = "Sinh viên";
                         } else if(type.equalsIgnoreCase("teacher")){
                             type = "Giảng viên";
+                            mssv = "";
                         }
 
 

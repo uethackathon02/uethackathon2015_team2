@@ -29,7 +29,7 @@ public class TableSubjectAdapter extends BaseAdapter{
 
     private void getSubjectData(){
         listSuject = new ArrayList<>();
-
+        listSubjectInTable = new ArrayList<>();
 //        listSuject.add(new ItemLopMonHoc("Xác suất thống kê", "MATH11111", "Giang vien",));
 //        listSuject.add(null);
 //        listSuject.add(new ItemLopMonHoc("Toán rời rạc", "MATH11111", "Giang vien", 100));

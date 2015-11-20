@@ -29,15 +29,7 @@ public class TimeLineAdapter extends BaseAdapter {
 
     private void initData() {
         itemArr = new ArrayList<>();
-        itemArr.add(new ItemTimeLine("Cho em hỏi bộ thư viện của JAVa dùng thế nào ạ?", 0, 0, false));
-        itemArr.add(new ItemTimeLine("Cho em hỏi bộ thư viện của JAVa dùng thế nào ạ?", 0, 0, true));
-        itemArr.add(new ItemTimeLine("Cho em hỏi bộ thư viện của JAVa dùng thế nào ạ?", 3, 2, false));
-        itemArr.add(new ItemTimeLine("Cho em hỏi bộ thư viện của JAVa dùng thế nào ạ?", 0, 0, false));
-        itemArr.add(new ItemTimeLine("Cho em hỏi bộ thư viện của JAVa dùng thế nào ạ?", 0, 0, false));
-        itemArr.add(new ItemTimeLine("Cho em hỏi bộ thư viện của JAVa dùng thế nào ạ?", 0, 0, false));
-        itemArr.add(new ItemTimeLine("Cho em hỏi bộ thư viện của JAVa dùng thế nào ạ?", 0, 0, false));
-        itemArr.add(new ItemTimeLine("Cho em hỏi bộ thư viện của JAVa dùng thế nào ạ?", 0, 0, false));
-        itemArr.add(new ItemTimeLine("Cho em hỏi bộ thư viện của JAVa dùng thế nào ạ?", 0, 0, false));
+
     }
 
     @Override
