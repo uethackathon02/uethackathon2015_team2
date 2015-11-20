@@ -24,11 +24,7 @@ public class ItemLop {
         if (ten == null) {
             return;
         }
-        vietTat = "";
-        String temp[] = ten.split(" ");
-        for (int i = 0; i < temp.length; i++) {
-            vietTat += temp[i].charAt(0);
-        }
+        vietTat = ten.charAt(0) + "";
     }
 
     public String getTen() {

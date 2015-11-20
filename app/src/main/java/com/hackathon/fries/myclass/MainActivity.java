@@ -107,7 +107,7 @@ public class MainActivity extends AppCompatActivity
     }
 
     private void hideAllFragment() {
-        getFragmentManager().beginTransaction().hide(lopFragment).commit();
+//        getFragmentManager().beginTransaction().hide(lopFragment).commit();
     }
 
     private void showLopFragment() {
@@ -183,24 +183,25 @@ public class MainActivity extends AppCompatActivity
                 toolbar.setTitle("Nhóm");
                 break;
             case R.id.nav_setting:
-                hideAllFragment();
+                //replace fragment moi
+//                hideAllFragment();
                 toolbar.setTitle("Cài đặt");
                 break;
             case R.id.nav_share:
-                hideAllFragment();
+//                hideAllFragment();
                 toolbar.setTitle("Chia sẻ");
                 break;
             case R.id.nav_thoikhoabieu:
-                hideAllFragment();
+                //replace fragment moi
                 toolbar.setTitle("Thời khoá biểu");
                 break;
             case R.id.nav_updateAccount:
-                hideAllFragment();
+//                hideAllFragment();
                 startEditActivity();
                 toolbar.setTitle(R.string.app_name);
                 break;
             case R.id.nav_logout:
-                hideAllFragment();
+//                hideAllFragment();
                 logout();
                 break;
         }
