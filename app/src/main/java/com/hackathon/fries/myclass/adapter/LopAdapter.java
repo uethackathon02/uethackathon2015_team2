@@ -69,6 +69,10 @@ public class LopAdapter extends BaseAdapter {
 
     private Random rand = new Random();
 
+    private long lastTimeUpdateItem = System.currentTimeMillis();
+    private static final long MIN_TIME_UPDATE = 200;
+    private long timeDelay = 0;
+
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         if (convertView == null) {
@@ -76,8 +80,18 @@ public class LopAdapter extends BaseAdapter {
         }
 
         // Set Animation for Item in ListView
+//        final View finalConvertView = convertView;
+//        convertView.postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
+//                Animation myAni = AnimationUtils.loadAnimation(mContext, R.anim.anim_show_item_listview);
+//                finalConvertView.startAnimation(myAni);
+//            }
+//        }, MIN_TIME_UPDATE*position);
+
         Animation myAni = AnimationUtils.loadAnimation(mContext, R.anim.anim_show_item_listview);
         convertView.startAnimation(myAni);
+
 
         TextView tvTen = (TextView) convertView.findViewById(R.id.tv_tenlopmonhoc);
         TextView tvId = (TextView) convertView.findViewById(R.id.tv_idlopmonhoc);

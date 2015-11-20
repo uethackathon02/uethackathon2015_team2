@@ -25,7 +25,7 @@
             android:id="@+id/itemNone"
             android:layout_width="70dp"
             android:layout_height="match_parent"
-            android:layout_below="@+id/txtTitleThoiKhoaBieu" />
+            />
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -131,11 +131,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/height_item_subject"
                     android:text="17.00"
-                    />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="@dimen/height_item_subject"
-                    android:text="18.00"
                     />
             </LinearLayout>
 

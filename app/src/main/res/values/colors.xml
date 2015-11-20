@@ -18,4 +18,17 @@
     <color name="lbl_name">#333333</color>
     <color name="btn_logut_bg">#ff6861</color>
     <color name="bg_editmode">#ff6861</color>
+
+    <color name="bg_item_subject_0">#03DDFF</color>
+    <color name="bg_item_subject_1">#33B5E6</color>
+    <color name="bg_item_subject_2">#AA66CD</color>
+    <color name="bg_item_subject_3">#98CB02</color>
+    <color name="bg_item_subject_4">#FF4443</color>
+    <color name="bg_item_subject_5">#FEF102</color>
+    <color name="bg_item_subject_6">#FF7F26</color>
+    <color name="bg_item_subject_7">#FFC80F</color>
+    <color name="bg_item_subject_8">#B6E51D</color>
+    <color name="bg_item_subject_9">#FEAEC9</color>
+
+
 </resources>

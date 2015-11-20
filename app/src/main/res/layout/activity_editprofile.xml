@@ -37,10 +37,23 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:hint="@string/hint_mssv"
+        android:singleLine="true"
+        android:layout_marginBottom="10dp"
+        android:padding="10dp"
+        android:inputType="number"
+        android:background="@android:color/white"
+        android:textColorHint="@color/input_login_hint"
+        android:id="@+id/edt_editmssv" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:hint="@string/hint_email"
         android:id="@+id/edt_editemail"
         android:layout_marginBottom="10dp"
         android:padding="10dp"
+        android:textColor="@android:color/darker_gray"
         android:inputType="textEmailAddress"
         android:background="@android:color/white"
         android:textColorHint="@color/input_login_hint"
@@ -56,6 +69,7 @@
         android:background="@android:color/white"
         android:textColorHint="@color/input_login_hint"
         android:id="@+id/edt_editlop" />
+
 
     <Button
         android:layout_marginTop="20dp"

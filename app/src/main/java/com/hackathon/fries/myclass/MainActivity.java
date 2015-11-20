@@ -99,6 +99,8 @@ public class MainActivity extends AppCompatActivity
         mIntent.putExtra("name", user.get("name"));
         mIntent.putExtra("email", user.get("email"));
         mIntent.putExtra("lop", user.get("lop"));
+        mIntent.putExtra("mssv", user.get("mssv"));
+        mIntent.putExtra("type", user.get("type"));
 
         startActivityForResult(mIntent, REQUEST_CODE_EDIT);
     }
@@ -163,6 +165,10 @@ public class MainActivity extends AppCompatActivity
                 if (getFragmentManager().getBackStackEntryCount() > 0) {
                     getFragmentManager().popBackStack();
                 } else {
+                    if (!lopFragment.isVisible()){
+                        showLopFragment();
+                        Log.i(TAG, "is hidden");
+                    }
                     lopFragment.showLopMonHoc();
                 }
                 toolbar.setTitle("Lớp môn học");
@@ -171,6 +177,10 @@ public class MainActivity extends AppCompatActivity
                 if (getFragmentManager().getBackStackEntryCount() > 0) {
                     getFragmentManager().popBackStack();
                 } else {
+                    if (!lopFragment.isVisible()){
+                        showLopFragment();
+                        Log.i(TAG, "is hidden");
+                    }
                     lopFragment.showLopKhoaHoc();
                 }
                 toolbar.setTitle("Lớp khoá học");
@@ -180,6 +190,10 @@ public class MainActivity extends AppCompatActivity
                 if (getFragmentManager().getBackStackEntryCount() > 0) {
                     getFragmentManager().popBackStack();
                 } else {
+                    if (!lopFragment.isVisible()){
+                        showLopFragment();
+                        Log.i(TAG, "is hidden");
+                    }
                     lopFragment.showNhomAdt();
                 }
                 toolbar.setTitle("Nhóm");
@@ -194,6 +208,9 @@ public class MainActivity extends AppCompatActivity
                 toolbar.setTitle("Chia sẻ");
                 break;
             case R.id.nav_thoikhoabieu:
+                if (getFragmentManager().getBackStackEntryCount() > 0) {
+                    getFragmentManager().popBackStack();
+                }
                 //replace fragment moi
                 getFragmentManager().beginTransaction().replace(R.id.container, thoiKhoaBieuFragment).commit();
                 toolbar.setTitle("Thời khoá biểu");
@@ -233,22 +250,21 @@ public class MainActivity extends AppCompatActivity
         switch (requestCode) {
             case REQUEST_CODE_EDIT:
                 if (resultCode == RESULT_OK) {
-                    String name = data.getStringExtra(SQLiteHandler.KEY_NAME);
-                    String lop = data.getStringExtra(SQLiteHandler.KEY_LOP_KHOA_HOC);
+                    String name = data.getStringExtra("name");
+                    String lop = data.getStringExtra("lop");
+                    String mssv = data.getStringExtra("mssv");
+                    String type = data.getStringExtra("type");
 
                     //Update csdl trong may va tren server
 //                    sqlite.updateUser(lop);
-                    HashMap<String, String> user = sqlite.getUserDetails();
-                    String email = user.get("email");
-                    String uid = user.get("uid");
-                    String createAt = user.get("created_at");
-                    String mssv = user.get("mssv");
-                    String type = user.get("type");
+//                    HashMap<String, String> user = sqlite.getUserDetails();
+//                    String email = user.get("email");
+//                    String uid = user.get("uid");
+//                    String createAt = user.get("created_at");
+////                    String mssv = user.get("mssv");
+//                    String type = user.get("type");
 
-                    tvName.setText(user.get(SQLiteHandler.KEY_NAME) + "(" + user.get(SQLiteHandler.KEY_TYPE) + ")");
-
-                    sqlite.deleteUsers();
-                    sqlite.addUser(name, email, uid, createAt, lop, mssv, type);
+                    tvName.setText(name + "(" + type + ")");
 
                     checkLogDb();
                 }
@@ -262,6 +278,7 @@ public class MainActivity extends AppCompatActivity
         //goi timelinefragment
         //set data cho listview
         TimelineFragment timelineFragment = new TimelineFragment();
+        timelineFragment.setIdLop(id);
 
         Toast.makeText(getApplicationContext(), "Id: " + id, Toast.LENGTH_LONG).show();
 
@@ -279,12 +296,12 @@ public class MainActivity extends AppCompatActivity
         String lop = user.get("lop");
         String type = user.get("type");
 
-        Log.i(TAG, "check db: " + name);
-        Log.i(TAG, "check db: " + email);
-        Log.i(TAG, "check db: " + uid);
-        Log.i(TAG, "check db: " + createAt);
-        Log.i(TAG, "check db: " + mssv);
-        Log.i(TAG, "check db: " + lop);
-        Log.i(TAG, "check db: " + type);
+        Log.i(TAG, "check db name: " + name);
+        Log.i(TAG, "check db email: " + email);
+        Log.i(TAG, "check db uid: " + uid);
+        Log.i(TAG, "check db create: " + createAt);
+        Log.i(TAG, "check db mssv: " + mssv);
+        Log.i(TAG, "check db lop: " + lop);
+        Log.i(TAG, "check db type: " + type);
     }
 }

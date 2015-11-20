@@ -48,4 +48,15 @@ public class ItemLopMonHoc {
     public int getNhomTH(){
         return nhomTH;
     }
+    public String getTenVietTat(){
+        if (ten == null) {
+            return "";
+        }
+        String vietTat = "";
+        String temp[] = ten.split(" ");
+        for (int i = 0; i < temp.length; i++) {
+            vietTat += temp[i].charAt(0);
+        }
+        return vietTat;
+    }
 }
