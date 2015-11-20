@@ -71,10 +71,42 @@ public class TimelineFragment extends Fragment {
 
     public void initData() {
         //Lay du lieu tu server ve luu trong 1 ArrayList
-        getPostComment(idLop);
+//        getPostComment(idLop);
         //set itemArr cho adapter
 
+        setDemoData();
+
 //        ArrayList<ItemTimeLine> itemArr = getPost();
+    }
+
+    private void setDemoData() {
+        itemPostArr = new ArrayList<>();
+        itemCommentArr = new ArrayList<>();
+
+        itemCommentArr.add(new ItemComment("","","",false));
+        itemCommentArr.add(new ItemComment("Tran Van Tu","","thang nay hoi cau ngu vcc",false));
+        itemCommentArr.add(new ItemComment("Tran Minh Quy","","thang nay hoi cau ngu vcc",true));
+        itemCommentArr.add(new ItemComment("Nguyen Tien Minh","","thang nay hoi cau ngu vcc",false));
+
+        itemPostArr.add(new ItemTimeLine("Tran Duc Hung", "", "Hom nay em co cau hoi rat hay danh cho quy vi", 12, true));
+        itemPostArr.add(new ItemTimeLine("Tran Duc Hung", "", "Hom nay em co cau hoi rat hay danh cho quy vi", 12, false));
+        itemPostArr.add(new ItemTimeLine("Tran Duc Hung", "", "Hom nay em co cau hoi rat hay danh cho quy vi", 12, false));
+        itemPostArr.add(new ItemTimeLine("Tran Duc Hung", "", "Hom nay em co cau hoi rat hay danh cho quy vi", 12, true));
+        itemPostArr.add(new ItemTimeLine("Tran Duc Hung", "", "Hom nay em co cau hoi rat hay danh cho quy vi", 12, true));
+        itemPostArr.add(new ItemTimeLine("Tran Duc Hung", "", "Hom nay em co cau hoi rat hay danh cho quy vi", 12, true));
+        itemPostArr.add(new ItemTimeLine("Tran Duc Hung", "", "Hom nay em co cau hoi rat hay danh cho quy vi", 12, true));
+        itemPostArr.add(new ItemTimeLine("Tran Duc Hung", "", "Hom nay em co cau hoi rat hay danh cho quy vi", 12, true));
+        itemPostArr.add(new ItemTimeLine("Tran Duc Hung", "", "Hom nay em co cau hoi rat hay danh cho quy vi", 12, true));
+
+        itemPostArr.get(0).setItemComments(itemCommentArr);
+        itemPostArr.get(1).setItemComments(itemCommentArr);
+        itemPostArr.get(2).setItemComments(itemCommentArr);
+        itemPostArr.get(3).setItemComments(itemCommentArr);
+        itemPostArr.get(4).setItemComments(itemCommentArr);
+        itemPostArr.get(5).setItemComments(itemCommentArr);
+        itemPostArr.get(6).setItemComments(itemCommentArr);
+        itemPostArr.get(7).setItemComments(itemCommentArr);
+        itemPostArr.get(8).setItemComments(itemCommentArr);
     }
 
     private ArrayList<ItemTimeLine> itemPostArr;
@@ -116,12 +148,15 @@ public class TimelineFragment extends Fragment {
                             JSONArray jsonComment = jsonPost.getJSONObject(i).getJSONArray("comment");
 
                             for (int j = 0; j < jsonComment.length(); j++) {
+                                itemCommentArr = new ArrayList<>();
                                 String name1 = jsonComment.getJSONObject(j).getString("name");
                                 String avaUrl1 = jsonComment.getJSONObject(j).getString("avatar");
                                 String contentComment = jsonComment.getJSONObject(j).getString("content");
                                 boolean isVote = jsonComment.getJSONObject(j).getBoolean("vote");
 
                                 itemCommentArr.add(new ItemComment(name1, avaUrl1, contentComment, isVote));
+
+                                itemPostArr.get(i).setItemComments(itemCommentArr);
                             }
                         }
                     }

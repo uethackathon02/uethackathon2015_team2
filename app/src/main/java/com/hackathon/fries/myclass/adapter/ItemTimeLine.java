@@ -1,5 +1,7 @@
 package com.hackathon.fries.myclass.adapter;
 
+import java.util.ArrayList;
+
 /**
  * Created by TooNies1810 on 11/20/15.
  */
@@ -9,6 +11,7 @@ public class ItemTimeLine {
     private String content;
     private int like;
     private boolean isConfirmByTeacher;
+    private ArrayList<ItemComment> itemComments = new ArrayList<>();
 
     public ItemTimeLine(String name, String ava, String content, int like, boolean isConfirmByTeacher) {
         this.name = name;
@@ -48,5 +51,13 @@ public class ItemTimeLine {
 
     public void setIsConfirmByTeacher(boolean isConfirmByTeacher) {
         this.isConfirmByTeacher = isConfirmByTeacher;
+    }
+
+    public ArrayList<ItemComment> getItemComments() {
+        return itemComments;
+    }
+
+    public void setItemComments(ArrayList<ItemComment> itemComments) {
+        this.itemComments = itemComments;
     }
 }
