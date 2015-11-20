@@ -1,68 +1,44 @@
 package com.hackathon.fries.myclass.adapter;
 
 import android.content.Context;
+import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
+import android.support.v7.widget.RecyclerView;
 
 import com.hackathon.fries.myclass.R;
+import com.hackathon.fries.myclass.holder.ItemPostHolder;
 
 import java.util.ArrayList;
 
 /**
  * Created by TooNies1810 on 11/20/15.
  */
-public class TimeLineAdapter extends BaseAdapter {
+public class TimeLineAdapter extends RecyclerView.Adapter<ItemPostHolder> {
     private Context mContext;
-    private LayoutInflater lf;
-    private ArrayList<ItemTimeLine> itemArr;
+    private ArrayList<ItemPostHolder> itemArr = new ArrayList<ItemPostHolder>();
 
-    public TimeLineAdapter(Context mContext) {
-        this.mContext = mContext;
-        lf = LayoutInflater.from(mContext);
-
-        itemArr = new ArrayList<>();
-        initData();
-    }
-
-    private void initData() {
-        itemArr = new ArrayList<>();
-        itemArr.add(new ItemTimeLine("Cho em hỏi bộ thư viện của JAVa dùng thế nào ạ?", 0, 0, false));
-        itemArr.add(new ItemTimeLine("Cho em hỏi bộ thư viện của JAVa dùng thế nào ạ?", 0, 0, true));
-        itemArr.add(new ItemTimeLine("Cho em hỏi bộ thư viện của JAVa dùng thế nào ạ?", 3, 2, false));
-        itemArr.add(new ItemTimeLine("Cho em hỏi bộ thư viện của JAVa dùng thế nào ạ?", 0, 0, false));
-        itemArr.add(new ItemTimeLine("Cho em hỏi bộ thư viện của JAVa dùng thế nào ạ?", 0, 0, false));
-        itemArr.add(new ItemTimeLine("Cho em hỏi bộ thư viện của JAVa dùng thế nào ạ?", 0, 0, false));
-        itemArr.add(new ItemTimeLine("Cho em hỏi bộ thư viện của JAVa dùng thế nào ạ?", 0, 0, false));
-        itemArr.add(new ItemTimeLine("Cho em hỏi bộ thư viện của JAVa dùng thế nào ạ?", 0, 0, false));
-        itemArr.add(new ItemTimeLine("Cho em hỏi bộ thư viện của JAVa dùng thế nào ạ?", 0, 0, false));
+    public TimeLineAdapter(ArrayList<ItemPostHolder> posts, Context ctx){
+        this.itemArr = posts;
+        this.mContext = ctx;
     }
 
     @Override
-    public int getCount() {
-        return itemArr.size();
+    public ItemPostHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(mContext).inflate(R.layout.item_post);
+        return null;
     }
 
     @Override
-    public ItemTimeLine getItem(int position) {
-        return itemArr.get(position);
+    public void onBindViewHolder(ItemPostHolder holder, int position) {
+
     }
 
     @Override
-    public long getItemId(int position) {
-        return position;
-    }
-
-    @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-        if (convertView == null) {
-            convertView = lf.inflate(R.layout.item_post, null);
-        }
-        TextView tvContent = (TextView) convertView.findViewById(R.id.tv_content);
-        tvContent.setText(itemArr.get(position).getContent());
-
-        return convertView;
+    public int getItemCount() {
+        return itemArr==null?0:itemArr.size();
     }
 }
