@@ -1,7 +1,5 @@
 package com.hackathon.fries.myclass.models;
 
-import com.hackathon.fries.myclass.adapter.ItemComment;
-
 import java.util.ArrayList;
 
 /**

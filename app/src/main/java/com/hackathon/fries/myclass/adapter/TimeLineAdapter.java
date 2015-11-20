@@ -10,30 +10,62 @@ import android.widget.TextView;
 import android.support.v7.widget.RecyclerView;
 
 import com.hackathon.fries.myclass.R;
+import com.hackathon.fries.myclass.holder.AbstactHolder;
 import com.hackathon.fries.myclass.holder.ItemPostHolder;
+import com.hackathon.fries.myclass.holder.ItemWritePostHolder;
+import com.hackathon.fries.myclass.models.ItemTimeLine;
 
 import java.util.ArrayList;
 
 /**
  * Created by TooNies1810 on 11/20/15.
  */
-public class TimeLineAdapter extends RecyclerView.Adapter<ItemPostHolder> {
+public class TimeLineAdapter extends RecyclerView.Adapter<AbstactHolder> {
     private Context mContext;
-    private ArrayList<ItemPostHolder> itemArr = new ArrayList<ItemPostHolder>();
+    private ArrayList<ItemTimeLine> itemArr = new ArrayList<ItemTimeLine>();
 
-    public TimeLineAdapter(ArrayList<ItemPostHolder> posts, Context ctx){
+    public TimeLineAdapter(ArrayList<ItemTimeLine> posts, Context ctx){
         this.itemArr = posts;
         this.mContext = ctx;
+        itemArr = posts;
+    }
+
+    public void updateList(ArrayList<ItemTimeLine> posts) {
+        this.itemArr = posts;
+        notifyDataSetChanged();
     }
 
     @Override
-    public ItemPostHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(mContext).inflate(R.layout.item_post);
-        return null;
+    public AbstactHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        //if(viewType == 1){
+            View view = LayoutInflater.from(mContext).inflate(R.layout.item_post, parent, false);
+            ItemPostHolder itemPostHolder = new ItemPostHolder(view);
+            return itemPostHolder;
+//        } else {
+//            View view = LayoutInflater.from(mContext).inflate(R.layout.writepost_layout, parent, false);
+//            ItemWritePostHolder itemWritePostHolder = new ItemWritePostHolder(view);
+//            return itemWritePostHolder;
+//        }
     }
 
     @Override
-    public void onBindViewHolder(ItemPostHolder holder, int position) {
+    public void onBindViewHolder(AbstactHolder abstactHolder, int position) {
+        if(true){
+            final ItemTimeLine itemTimeLine = itemArr.get(position);
+            //itemPostHolder.getImgAvatar();
+            ItemPostHolder itemPostHolder = (ItemPostHolder) abstactHolder;
+            itemPostHolder.getTxtTitle().setText(itemTimeLine.getName());
+            itemPostHolder.getTxtContent().setText(itemTimeLine.getContent());
+            itemPostHolder.getTxtCountLike().setText(String.valueOf(itemTimeLine.getLike()) + " cám ơn");//
+            itemPostHolder.getTxtCountComment().setText(String.valueOf(itemTimeLine.getItemComments().size()) + " bình luận");//
+            //itemPostHolder.getImgAvatarLastPost();
+            itemPostHolder.getTxtNameLastPost().setText(
+                    itemTimeLine.getItemComments().get(itemTimeLine.getItemComments().size() - 1).getName());
+            itemPostHolder.getTxtCommentLastPost().setText(
+                    itemTimeLine.getItemComments().get(itemTimeLine.getItemComments().size() - 1).getContent());
+        } else {
+                ItemWritePostHolder itemWritePostHolder = (ItemWritePostHolder) abstactHolder;
+        }
 
     }
 
