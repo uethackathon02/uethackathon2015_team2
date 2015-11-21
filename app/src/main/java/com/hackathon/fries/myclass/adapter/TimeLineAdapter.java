@@ -2,6 +2,7 @@ package com.hackathon.fries.myclass.adapter;
 
 import android.content.Context;
 import android.text.Layout;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,7 +35,15 @@ public class TimeLineAdapter extends RecyclerView.Adapter<AbstactHolder> {
         this.itemArr = posts;
         notifyDataSetChanged();
     }
-
+    @Override
+    public int getItemViewType(int position){
+        if(position == 0){
+            return 0;
+        }
+        else {
+            return 1;
+        }
+    }
     @Override
     public AbstactHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         if(viewType == 1){
@@ -50,7 +59,8 @@ public class TimeLineAdapter extends RecyclerView.Adapter<AbstactHolder> {
 
     @Override
     public void onBindViewHolder(AbstactHolder abstactHolder, int position) {
-        if(position != 0){
+        if(abstactHolder.getViewHolderType() == 1){
+            Log.i("Post","abcd");
             final ItemTimeLine itemTimeLine = itemArr.get(position - 1);
             //itemPostHolder.getImgAvatar();
             ItemPostHolder itemPostHolder = (ItemPostHolder) abstactHolder;
@@ -64,6 +74,7 @@ public class TimeLineAdapter extends RecyclerView.Adapter<AbstactHolder> {
             itemPostHolder.getTxtCommentLastPost().setText(
                     itemTimeLine.getItemComments().get(itemTimeLine.getItemComments().size() - 1).getContent());
         } else {
+            Log.i("Write","abcd");
                // ItemWritePostHolder itemWritePostHolder = (ItemWritePostHolder) abstactHolder;
         }
 
