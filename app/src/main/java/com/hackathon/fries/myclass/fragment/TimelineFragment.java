@@ -118,80 +118,10 @@ public class TimelineFragment extends Fragment implements SwipeRefreshLayout.OnR
         return root;
     }
 
-//    private void initViews() {
-//        mRecyclerView = (RecyclerView) root.findViewById(R.id.recycler);
-//        final LinearLayoutManager linearLayoutManager = new LinearLayoutManager(mainContext);
-//        mRecyclerView.setLayoutManager(linearLayoutManager);
-//
-////        Log.i(TAG, "initview name: " + itemPostArr.get(0).getName());
-////        Log.i(TAG, "initview content: " + itemPostArr.get(0).getContent());
-////        Log.i(TAG, "initview like: " + itemPostArr.get(0).getLike());
-////        Log.i(TAG, "initview title: " + itemPostArr.get(0).getTitle());
-//
-//        mAdapter = new TimeLineAdapter(itemPostArr, mainContext);
-//
-//        mRecyclerView.setAdapter(mAdapter);
-//    }
-
-//    public void initData() {
-//        //Lay du lieu tu server ve luu trong 1 ArrayList
-////        getPostComment(idLop);
-//        //set itemArr cho adapter
-//
-////        setDemoData();
-//        switch (lopType) {
-//            case LopFragment.LOP_MON_HOC:
-//                keyLopType = LopFragment.KEY_LOP_MON_HOC;
-//                break;
-//            case LopFragment.LOP_KHOA_HOC:
-//                keyLopType = LopFragment.KEY_LOP_KHOA_HOC;
-//                break;
-//            case LopFragment.NHOM:
-//                keyLopType = LopFragment.KEY_NHOM;
-//                break;
-//        }
-////        itemPostArr = new ArrayList<>();
-//        requestPost(idLop, keyLopType, itemPostArr);
-////        setDemoData();
-////        new RequestPSot().execute();
-//
-//    }
-
-
-//    private void setDemoData() {
-////        itemPostArr = new ArrayList<>();
-//        ArrayList<ItemComment> itemCommentArr = new ArrayList<>();
-//
-//        itemCommentArr.add(new ItemComment("", "", "", false));
-//        itemCommentArr.add(new ItemComment("Tran Van Tu", "", "thang nay hoi cau ngu vcc", false));
-//        itemCommentArr.add(new ItemComment("Tran Minh Quy", "", "thang nay hoi cau ngu vcc", true));
-//        itemCommentArr.add(new ItemComment("Nguyen Tien Minh", "", "thang nay hoi cau ngu vcc", false));
-//
-//        itemPostArr.add(new ItemTimeLine("Hoi ngu", "Tran Duc Hung", "", "Hom nay em co cau hoi rat hay danh cho quy vi", 12, true));
-//        itemPostArr.add(new ItemTimeLine("Hoi ngu", "Tran Duc Hung", "", "Hom nay em co cau hoi rat hay danh cho quy vi", 12, false));
-//        itemPostArr.add(new ItemTimeLine("Hoi ngu", "Tran Duc Hung", "", "Hom nay em co cau hoi rat hay danh cho quy vi", 12, false));
-//        itemPostArr.add(new ItemTimeLine("Hoi ngu", "Tran Duc Hung", "", "Hom nay em co cau hoi rat hay danh cho quy vi", 12, true));
-//        itemPostArr.add(new ItemTimeLine("Hoi ngu", "Tran Duc Hung", "", "Hom nay em co cau hoi rat hay danh cho quy vi", 12, true));
-//        itemPostArr.add(new ItemTimeLine("Hoi ngu", "Tran Duc Hung", "", "Hom nay em co cau hoi rat hay danh cho quy vi", 12, true));
-//        itemPostArr.add(new ItemTimeLine("Hoi ngu", "Tran Duc Hung", "", "Hom nay em co cau hoi rat hay danh cho quy vi", 12, true));
-//        itemPostArr.add(new ItemTimeLine("Hoi ngu", "Tran Duc Hung", "", "Hom nay em co cau hoi rat hay danh cho quy vi", 12, true));
-//        itemPostArr.add(new ItemTimeLine("Hoi ngu", "Tran Duc Hung", "", "Hom nay em co cau hoi rat hay danh cho quy vi", 12, true));
-//
-//        itemPostArr.get(0).setItemComments(itemCommentArr);
-//        itemPostArr.get(1).setItemComments(itemCommentArr);
-//        itemPostArr.get(2).setItemComments(itemCommentArr);
-//        itemPostArr.get(3).setItemComments(itemCommentArr);
-//        itemPostArr.get(4).setItemComments(itemCommentArr);
-//        itemPostArr.get(5).setItemComments(itemCommentArr);
-//        itemPostArr.get(6).setItemComments(itemCommentArr);
-//        itemPostArr.get(7).setItemComments(itemCommentArr);
-//        itemPostArr.get(8).setItemComments(itemCommentArr);
-//    }
-
     private void requestPost(final String id, final String database_type, final ArrayList<ItemTimeLine> itemPostArr) {
         //Hien thi 1 dialog cho request
 //        showDialog();
-//        swipeRefresh.setRefreshing(true);
+        swipeRefresh.setRefreshing(true);
 
         StringRequest request = new StringRequest(Method.POST, AppConfig.URL_GET_POST, new Response.Listener<String>() {
             @Override
@@ -199,7 +129,7 @@ public class TimelineFragment extends Fragment implements SwipeRefreshLayout.OnR
 //                hideDialog();
                 Log.i(TAG, "nhay vao onResponse");
                 Log.i(TAG, response);
-//                swipeRefresh.setRefreshing(false);
+                swipeRefresh.setRefreshing(false);
 
                 try {
                     JSONObject jsonObject = new JSONObject(response);
@@ -329,6 +259,18 @@ public class TimelineFragment extends Fragment implements SwipeRefreshLayout.OnR
     public void onRefresh() {
 //        initData();
 //        initViews();
+        Log.i(TAG, "onRefesh");
+        itemPostArr = new ArrayList<>();
+        requestPost(idLop, keyLopType, itemPostArr);
+
+        Handler handler = new Handler();
+        handler.postAtTime(new Runnable() {
+            @Override
+            public void run() {
+                mAdapter.updateList(itemPostArr);
+                mAdapter.notifyDataSetChanged();
+            }
+        }, 2000);
     }
 
 //    private void showDialog() {

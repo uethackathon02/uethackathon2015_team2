@@ -138,8 +138,8 @@ public class RegisterActivity extends Activity {
                         JSONObject user = jObj.getJSONObject("user");
 //                        String name = user.getString("name");
                         String email = user.getString("email");
-                        String created_at = user
-                                .getString("created_at");
+//                        String created_at = user
+//                                .getString("created_at");
                         String lop = user.getString("lop");
                         String mssv = user.getString("mssv");
                         String type = user.getString("type");
@@ -151,7 +151,7 @@ public class RegisterActivity extends Activity {
 
                         Log.i(TAG, "register: " + name);
                         Log.i(TAG, "register: " + email);
-                        Log.i(TAG, "register: " + created_at);
+//                        Log.i(TAG, "register: " + created_at);
                         Log.i(TAG, "register: " + lop);
                         Log.i(TAG, "register: " + mssv);
                         Log.i(TAG, "register: " + type);

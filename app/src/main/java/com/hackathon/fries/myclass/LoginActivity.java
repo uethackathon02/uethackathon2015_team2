@@ -148,7 +148,7 @@ public class LoginActivity extends Activity {
                         JSONObject user = jObj.getJSONObject("user");
                         String ava = user.getString("avatar");
                         String email = user.getString("email");
-                        String created_at = user.getString("created_at");
+//                        String created_at = user.getString("created_at");
                         String lop = user.getString("lop");
                         String mssv = user.getString("mssv");
                         String type = user.getString("type");
@@ -158,6 +158,7 @@ public class LoginActivity extends Activity {
 //                        String lop = "K58CLC";
 //                        String mssv = "13020285";
 //                        String type = "Sinh viên";
+                        String created_at = "";
 
                         if (type.equalsIgnoreCase("student")) {
                             type = "Sinh viên";
@@ -170,7 +171,7 @@ public class LoginActivity extends Activity {
                         Log.i(TAG, "login: " + name);
                         Log.i(TAG, "login: " + ava);
                         Log.i(TAG, "login: " + email);
-                        Log.i(TAG, "login: " + created_at);
+//                        Log.i(TAG, "login: " + created_at);
                         Log.i(TAG, "login: " + lop);
                         Log.i(TAG, "login: " + mssv);
                         Log.i(TAG, "login: " + type);
