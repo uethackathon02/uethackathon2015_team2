@@ -284,7 +284,11 @@ public class MainActivity extends AppCompatActivity
         //goi timelinefragment
         //set data cho listview
         TimelineFragment timelineFragment = new TimelineFragment();
-        timelineFragment.setIdLop(idData, lopType);
+        Bundle b = new Bundle();
+        b.putString("idData", idData);
+        b.putInt("lopType", lopType);
+        timelineFragment.setArguments(b);
+//        timelineFragment.setIdLop(idData, lopType);
 
         Toast.makeText(getApplicationContext(), "Id: " + idData, Toast.LENGTH_LONG).show();
 

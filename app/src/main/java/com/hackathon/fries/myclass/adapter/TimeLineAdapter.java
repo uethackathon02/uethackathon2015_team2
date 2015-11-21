@@ -82,6 +82,7 @@ public class TimeLineAdapter extends RecyclerView.Adapter<AbstactHolder> {
             } catch (IOException e) {
                 e.printStackTrace();
             }
+            Log.i(TAG, "title" + itemTimeLine.getTitle());
             itemPostHolder.getTxtTitle().setText(itemTimeLine.getTitle());
             itemPostHolder.getTxtContent().setText(itemTimeLine.getContent());
             itemPostHolder.getTxtCountLike().setText(itemTimeLine.getLike() + " cám ơn");//
