@@ -9,6 +9,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -18,6 +20,9 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.hackathon.fries.myclass.app.AppConfig;
 import com.hackathon.fries.myclass.app.AppController;
+import com.hackathon.fries.myclass.appmanager.AppManager;
+import com.hackathon.fries.myclass.fragment.LopFragment;
+import com.hackathon.fries.myclass.helper.SQLiteHandler;
 import com.hackathon.fries.myclass.models.ItemComment;
 import com.hackathon.fries.myclass.models.ItemTimeLine;
 
@@ -33,6 +38,9 @@ public class PostWriterActivity extends AppCompatActivity {
     private static final String TAG = "PostWriterActivity";
     private ProgressDialog pDialog;
 
+    private ImageView ivPost;
+    private EditText edtContentPost;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,9 +52,47 @@ public class PostWriterActivity extends AppCompatActivity {
         pDialog = new ProgressDialog(this);
         pDialog.setCancelable(false);
 
+        initViews();
     }
 
-    private void postPost(final String uid, final String base, final String title, final String content) {
+    private void initViews() {
+        edtContentPost = (EditText) findViewById(R.id.edt_contentPost);
+        ivPost = (ImageView) findViewById(R.id.iv_post);
+
+        ivPost.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String content = edtContentPost.getText().toString();
+                if (content.isEmpty()) {
+                    return;
+                }
+
+                //get user
+                SQLiteHandler db = new SQLiteHandler(getApplicationContext());
+                HashMap<String, String> user = db.getUserDetails();
+                String uid = user.get("uid");
+
+                int currentAdapter = AppManager.getInstance().getCurrentAdapter();
+                String currentDBKey = "";
+
+                switch (currentAdapter) {
+                    case LopFragment.LOP_MON_HOC:
+                        currentDBKey = LopFragment.KEY_LOP_MON_HOC;
+                        break;
+                    case LopFragment.LOP_KHOA_HOC:
+                        currentDBKey = LopFragment.KEY_LOP_KHOA_HOC;
+                        break;
+                    case LopFragment.NHOM:
+                        currentDBKey = LopFragment.KEY_NHOM;
+                        break;
+                }
+
+
+            }
+        });
+    }
+
+    private void postPost(final String uid, final String group, final String base, final String title, final String content) {
         showDialog();
 
         StringRequest request = new StringRequest(Request.Method.POST, AppConfig.URL_POST_POST,
@@ -110,6 +156,8 @@ public class PostWriterActivity extends AppCompatActivity {
                 data.put("base", base);
                 data.put("title", title);
                 data.put("content", content);
+                data.put("group", group);
+
                 return data;
             }
         };

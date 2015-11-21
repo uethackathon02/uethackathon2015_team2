@@ -170,9 +170,8 @@ public class TimelineFragment extends Fragment implements SwipeRefreshLayout.OnR
                             //Luu vao 1 arraylist comment
                             JSONArray jsonCommentArr = jsonPostArr.getJSONObject(i).getJSONArray("comments");
 
-                            ArrayList<ItemComment> itemCommentArr = null;
+                            ArrayList<ItemComment> itemCommentArr = new ArrayList<>();
                             for (int j = 0; j < jsonCommentArr.length(); j++) {
-                                itemCommentArr = new ArrayList<>();
 
                                 String idComment = jsonCommentArr.getJSONObject(j).getString("id");
                                 String contentComment = jsonCommentArr.getJSONObject(j).getString("content");

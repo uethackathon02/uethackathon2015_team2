@@ -14,6 +14,8 @@ public class AppManager {
     private ArrayList<ItemLop> arrItemLopKhoaHoc;
     private ArrayList<ItemLop> arrItemLopMonHoc;
 
+    private int currentAdapter;
+
     private Context mainContext;
     public AppManager(){
         arrItemLopKhoaHoc = new ArrayList<>();
@@ -56,5 +58,13 @@ public class AppManager {
 
     public void setArrItemLopMonHoc(ArrayList<ItemLop> arrItemLopMonHoc) {
         this.arrItemLopMonHoc = arrItemLopMonHoc;
+    }
+
+    public int getCurrentAdapter() {
+        return currentAdapter;
+    }
+
+    public void setCurrentAdapter(int currentAdapter) {
+        this.currentAdapter = currentAdapter;
     }
 }

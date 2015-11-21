@@ -158,18 +158,22 @@ public class LopFragment extends Fragment implements AdapterView.OnItemClickList
         lvMain.setAdapter(lopMonHocAdt);
         currentAdapter = LOP_MON_HOC;
         currentDBKey = KEY_LOP_MON_HOC;
+
+        AppManager.getInstance().setCurrentAdapter(currentAdapter);
     }
 
     public void showLopKhoaHoc() {
         lvMain.setAdapter(lopKhoaHocAdt);
         currentAdapter = LOP_KHOA_HOC;
         currentDBKey = KEY_LOP_KHOA_HOC;
+        AppManager.getInstance().setCurrentAdapter(currentAdapter);
     }
 
     public void showNhomAdt() {
         lvMain.setAdapter(nhomAdt);
         currentAdapter = NHOM;
         currentDBKey = KEY_NHOM;
+        AppManager.getInstance().setCurrentAdapter(currentAdapter);
     }
 
 

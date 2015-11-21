@@ -44,7 +44,7 @@
             android:layout_below="@+id/topPanelPosWrite"
             android:inputType="textMultiLine"
             android:ems="50"
-            android:id="@+id/editText2"
+            android:id="@+id/edt_contentPost"
             android:background="#00000000"
             />
 
@@ -57,7 +57,7 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/imageView4"
+                android:id="@+id/iv_post"
                 android:src="@mipmap/ic_action"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true" />
