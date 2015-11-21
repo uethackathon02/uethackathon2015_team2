@@ -34,11 +34,12 @@ public class CommentAdapter extends BaseAdapter {
     private Context mContext;
     private LayoutInflater lf;
 
-    public CommentAdapter(Context context){
+    public CommentAdapter(Context context, ArrayList<ItemComment> arr){
+        listComments = arr;
         mContext = context;
         lf = LayoutInflater.from(mContext);
 
-        getDataComments();
+//        getDataComments();
     }
 
     private void getDataComments(){
@@ -92,8 +93,7 @@ public class CommentAdapter extends BaseAdapter {
         return view;
     }
 
-    public Bitmap getImageBitmapFromUrl(String path)
-    {
+    public Bitmap getImageBitmapFromUrl(String path) {
         Bitmap bm = null;
         try {
             URL url = new URL(path);
