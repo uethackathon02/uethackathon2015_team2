@@ -44,7 +44,7 @@ public class TimelineFragment extends Fragment implements SwipeRefreshLayout.OnR
     private static final String TAG = "TimelineFragment";
     private View root;
     private Context mainContext;
-    private ListView lvTimeline;
+//    private ListView lvTimeline;
     private TimeLineAdapter mAdapter;
     private ArrayList<ItemTimeLine> itemPostArr;
     //    private ProgressDialog pLog;
@@ -109,7 +109,7 @@ public class TimelineFragment extends Fragment implements SwipeRefreshLayout.OnR
         }
         itemPostArr = new ArrayList<>();
         requestPost(idLop, keyLopType, itemPostArr);
-        setDemoData();
+//        setDemoData();
 //        new RequestPSot().execute();
 
     }
@@ -144,12 +144,8 @@ public class TimelineFragment extends Fragment implements SwipeRefreshLayout.OnR
         itemPostArr.get(7).setItemComments(itemCommentArr);
         itemPostArr.get(8).setItemComments(itemCommentArr);
     }
-//    private boolean isDataLoaded = false;
 
     private void requestPost(final String id, final String database_type, final ArrayList<ItemTimeLine> itemPostArr) {
-//        itemPostArr = new ArrayList<>();
-//        itemCommentArr = new ArrayList<>();
-
         //Hien thi 1 dialog cho request
 //        showDialog();
         swipeRefresh.setRefreshing(true);
@@ -158,13 +154,13 @@ public class TimelineFragment extends Fragment implements SwipeRefreshLayout.OnR
             @Override
             public void onResponse(String response) {
 //                hideDialog();
+                Log.i(TAG, response);
                 swipeRefresh.setRefreshing(false);
 
                 try {
                     JSONObject jsonObject = new JSONObject(response);
                     boolean error = jsonObject.getBoolean("error");
                     if (!error) {
-//                        String id = jsonObject.getString("idclass");
                         //lay jsonItem nhet vao item
                         JSONArray jsonPostArr = jsonObject.getJSONArray("posts");
 

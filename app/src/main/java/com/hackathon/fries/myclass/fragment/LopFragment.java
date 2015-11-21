@@ -115,7 +115,7 @@ public class LopFragment extends Fragment implements AdapterView.OnItemClickList
         MainActivity mainActivity = (MainActivity) mContext;
 
         ItemLop item = (ItemLop) parent.getAdapter().getItem(position);
-        mainActivity.goToTimeLine(item.getIdData(),currentAdapter);
+        mainActivity.goToTimeLine(item.getIdData(), currentAdapter);
     }
 
     private void initLopMonHoc() {
@@ -204,10 +204,12 @@ public class LopFragment extends Fragment implements AdapterView.OnItemClickList
                             Log.i(TAG, "so sv: " + soSV);
 
                             JSONObject jsonGiangVien = jsonLopHocArray.getJSONObject(i).getJSONObject("teacher");
-                            String idGiangVien = jsonGiangVien.getString("id");
+
                             String nameGiangVien = jsonGiangVien.getString("name");
+                            String idGiangVien = jsonGiangVien.getString("id");
                             String emailGiangVien = jsonGiangVien.getString("email");
                             String typeGiangVien = jsonGiangVien.getString("type");
+
 
                             itemArr.add(new ItemLop(nameLop, id, idLop, nameGiangVien, soSV));
                         }
@@ -265,12 +267,12 @@ public class LopFragment extends Fragment implements AdapterView.OnItemClickList
     @Override
     public void onRefresh() {
         ArrayList<ItemLop> itemLopArr = new ArrayList<>();
-        requestLopHoc(uid,currentDBKey,itemLopArr);
+        requestLopHoc(uid, currentDBKey, itemLopArr);
 
         Toast.makeText(mContext, "currentDBKey: " + currentDBKey +
                 " currentadapter: " + currentAdapter, Toast.LENGTH_LONG).show();
 
-        switch (currentAdapter){
+        switch (currentAdapter) {
             case LOP_MON_HOC:
                 initLopMonHoc();
                 break;
