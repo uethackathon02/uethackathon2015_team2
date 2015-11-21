@@ -85,25 +85,24 @@ public class TimelineFragment extends Fragment {
     }
 
 
-
     private void setDemoData() {
         itemPostArr = new ArrayList<>();
         itemCommentArr = new ArrayList<>();
 
-        itemCommentArr.add(new ItemComment("","","",false));
-        itemCommentArr.add(new ItemComment("Tran Van Tu","","thang nay hoi cau ngu vcc",false));
-        itemCommentArr.add(new ItemComment("Tran Minh Quy","","thang nay hoi cau ngu vcc",true));
-        itemCommentArr.add(new ItemComment("Nguyen Tien Minh","","thang nay hoi cau ngu vcc",false));
+        itemCommentArr.add(new ItemComment("", "", "", false));
+        itemCommentArr.add(new ItemComment("Tran Van Tu", "", "thang nay hoi cau ngu vcc", false));
+        itemCommentArr.add(new ItemComment("Tran Minh Quy", "", "thang nay hoi cau ngu vcc", true));
+        itemCommentArr.add(new ItemComment("Nguyen Tien Minh", "", "thang nay hoi cau ngu vcc", false));
 
-        itemPostArr.add(new ItemTimeLine("Tran Duc Hung", "", "Hom nay em co cau hoi rat hay danh cho quy vi", 12, true));
-        itemPostArr.add(new ItemTimeLine("Tran Duc Hung", "", "Hom nay em co cau hoi rat hay danh cho quy vi", 12, false));
-        itemPostArr.add(new ItemTimeLine("Tran Duc Hung", "", "Hom nay em co cau hoi rat hay danh cho quy vi", 12, false));
-        itemPostArr.add(new ItemTimeLine("Tran Duc Hung", "", "Hom nay em co cau hoi rat hay danh cho quy vi", 12, true));
-        itemPostArr.add(new ItemTimeLine("Tran Duc Hung", "", "Hom nay em co cau hoi rat hay danh cho quy vi", 12, true));
-        itemPostArr.add(new ItemTimeLine("Tran Duc Hung", "", "Hom nay em co cau hoi rat hay danh cho quy vi", 12, true));
-        itemPostArr.add(new ItemTimeLine("Tran Duc Hung", "", "Hom nay em co cau hoi rat hay danh cho quy vi", 12, true));
-        itemPostArr.add(new ItemTimeLine("Tran Duc Hung", "", "Hom nay em co cau hoi rat hay danh cho quy vi", 12, true));
-        itemPostArr.add(new ItemTimeLine("Tran Duc Hung", "", "Hom nay em co cau hoi rat hay danh cho quy vi", 12, true));
+        itemPostArr.add(new ItemTimeLine("Hoi ngu", "Tran Duc Hung", "", "Hom nay em co cau hoi rat hay danh cho quy vi", 12, true));
+        itemPostArr.add(new ItemTimeLine("Hoi ngu", "Tran Duc Hung", "", "Hom nay em co cau hoi rat hay danh cho quy vi", 12, false));
+        itemPostArr.add(new ItemTimeLine("Hoi ngu", "Tran Duc Hung", "", "Hom nay em co cau hoi rat hay danh cho quy vi", 12, false));
+        itemPostArr.add(new ItemTimeLine("Hoi ngu", "Tran Duc Hung", "", "Hom nay em co cau hoi rat hay danh cho quy vi", 12, true));
+        itemPostArr.add(new ItemTimeLine("Hoi ngu", "Tran Duc Hung", "", "Hom nay em co cau hoi rat hay danh cho quy vi", 12, true));
+        itemPostArr.add(new ItemTimeLine("Hoi ngu", "Tran Duc Hung", "", "Hom nay em co cau hoi rat hay danh cho quy vi", 12, true));
+        itemPostArr.add(new ItemTimeLine("Hoi ngu", "Tran Duc Hung", "", "Hom nay em co cau hoi rat hay danh cho quy vi", 12, true));
+        itemPostArr.add(new ItemTimeLine("Hoi ngu", "Tran Duc Hung", "", "Hom nay em co cau hoi rat hay danh cho quy vi", 12, true));
+        itemPostArr.add(new ItemTimeLine("Hoi ngu", "Tran Duc Hung", "", "Hom nay em co cau hoi rat hay danh cho quy vi", 12, true));
 
         itemPostArr.get(0).setItemComments(itemCommentArr);
         itemPostArr.get(1).setItemComments(itemCommentArr);
@@ -115,7 +114,6 @@ public class TimelineFragment extends Fragment {
         itemPostArr.get(7).setItemComments(itemCommentArr);
         itemPostArr.get(8).setItemComments(itemCommentArr);
     }
-
 
 
     private void getPostComment(final String id) {
@@ -147,7 +145,7 @@ public class TimelineFragment extends Fragment {
                             String ava = jsonPost.getJSONObject(i).getString("ava");
                             int like = jsonPost.getJSONObject(i).getInt("like");
                             boolean isConfirm = jsonPost.getJSONObject(i).getBoolean("confirm");
-                            itemPostArr.add(new ItemTimeLine(name, ava, content, like, isConfirm));
+                            itemPostArr.add(new ItemTimeLine(tittle, name, ava, content, like, isConfirm));
 
                             //Lay mang cac comment
                             //Luu vao 1 arraylist comment
