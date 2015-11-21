@@ -35,7 +35,8 @@
         <EditText
             android:id="@+id/edt_contentPost"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_height="130dp"
+            android:gravity="left|top"
             android:ems="50"
             android:inputType="textMultiLine" />
 
