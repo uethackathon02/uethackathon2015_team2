@@ -21,6 +21,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.hackathon.fries.myclass.R;
+import com.hackathon.fries.myclass.appmanager.AppManager;
 import com.hackathon.fries.myclass.models.ItemComment;
 import com.hackathon.fries.myclass.models.ItemTimeLine;
 import com.hackathon.fries.myclass.adapter.TimeLineAdapter;
@@ -145,7 +146,7 @@ public class TimelineFragment extends Fragment implements SwipeRefreshLayout.OnR
                         for (int i = 0; i < jsonPostArr.length(); i++) {
                             //Lay mang cac post
                             //Luu vao 1 arrayList post
-                            String id = jsonPostArr.getJSONObject(i).getString("id");
+                            String idPost = jsonPostArr.getJSONObject(i).getString("id");
                             String titlePost = jsonPostArr.getJSONObject(i).getString("title");
                             String contentPost = jsonPostArr.getJSONObject(i).getString("content");
                             String groupType = jsonPostArr.getJSONObject(i).getString("group");
@@ -168,7 +169,7 @@ public class TimelineFragment extends Fragment implements SwipeRefreshLayout.OnR
 
                             boolean isConfirm = false;
 
-                            itemPostArr.add(new ItemTimeLine(titlePost, nameAuthorPost, "", contentPost, like, isConfirm));
+                            itemPostArr.add(new ItemTimeLine(idPost, titlePost, nameAuthorPost, "", contentPost, like, isConfirm));
 
                             //Lay mang cac comment
                             //Luu vao 1 arraylist comment
@@ -247,6 +248,7 @@ public class TimelineFragment extends Fragment implements SwipeRefreshLayout.OnR
 //            Log.i(TAG, "setadapter thanh cong");
 //            initViews();
             Log.i(TAG, "ok");
+            AppManager.getInstance().setArrItemTimeLine(itemPostArr);
 
             for (int i = 0; i < itemPostArr.size(); i++) {
                 Log.i(TAG, "itemPost: " + itemPostArr.get(i).getName());
