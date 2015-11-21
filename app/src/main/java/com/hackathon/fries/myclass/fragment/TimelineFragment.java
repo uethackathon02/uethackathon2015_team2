@@ -109,7 +109,8 @@ public class TimelineFragment extends Fragment implements SwipeRefreshLayout.OnR
                 mRecyclerView = (RecyclerView) root.findViewById(R.id.recycler);
                 final LinearLayoutManager linearLayoutManager = new LinearLayoutManager(mainContext);
                 mRecyclerView.setLayoutManager(linearLayoutManager);
-                //ItemTimeLine item =
+                //String title, String name, String ava, String content, int like, boolean isConfirmByTeacher
+                //ItemTimeLine item = new ItemTimeLine("FLAGS_POS");
                 //itemPostArr.add(item);
                 mAdapter = new TimeLineAdapter(itemPostArr, mainContext);
                 mRecyclerView.setAdapter(mAdapter);
@@ -199,7 +200,7 @@ public class TimelineFragment extends Fragment implements SwipeRefreshLayout.OnR
                             mAdapter.notifyDataSetChanged();
                         }
 
-                        Toast.makeText(mainContext, "Lay thong tin bai post thanh cong", Toast.LENGTH_LONG).show();
+                        //Toast.makeText(mainContext, "Lay thong tin bai post thanh cong", Toast.LENGTH_LONG).show();
 
                         Log.i(TAG, "post2: " + itemPostArr.get(0).getName());
                         Log.i(TAG, "post2: " + itemPostArr.get(0).getTitle());
@@ -224,7 +225,7 @@ public class TimelineFragment extends Fragment implements SwipeRefreshLayout.OnR
             public void onErrorResponse(VolleyError error) {
 //                hideDialog();
                 swipeRefresh.setRefreshing(false);
-                Toast.makeText(mainContext, "Không load được thông tin bài đăng", Toast.LENGTH_LONG).show();
+                Toast.makeText(mainContext, "Không có bài đăng nào.", Toast.LENGTH_LONG).show();
             }
         }) {
             @Override
