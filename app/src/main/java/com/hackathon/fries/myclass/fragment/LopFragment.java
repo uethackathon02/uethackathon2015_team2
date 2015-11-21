@@ -1,9 +1,7 @@
 package com.hackathon.fries.myclass.fragment;
 
 import android.app.Fragment;
-import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -121,15 +119,15 @@ public class LopFragment extends Fragment implements AdapterView.OnItemClickList
 
     private void initLopMonHoc() {
         ArrayList<ItemLop> itemArr = new ArrayList<>();
-//        itemArr.add(new ItemLop("Tin hoc cơ sở 4", "INT2204 1", "Lê Nguyên Khôi", 90));
-//        itemArr.add(new ItemLop("Cơ nhiệt", "INT2204 1", "Đinh Văn Châu", 90));
-//        itemArr.add(new ItemLop("Tin học cơ sở 1", "INT2204 1", "Lê Nguyên Khôi", 90));
-//        itemArr.add(new ItemLop("Xác suất thống kê", "INT2204 1", "Lê Phê Đô", 90));
-//        itemArr.add(new ItemLop("Tin nâng cao", "INT2204 1", "Lê Nguyên Khôi", 90));
-//        itemArr.add(new ItemLop("Lập trình hướng đối tượng", "INT2204 1", "Lê Nguyên Khôi", 90));
-//        itemArr.add(new ItemLop("Thiết kế giao diện người dùng", "INT2204 1", "Nguyễn Thị Nhật Thanh", 90));
-//        itemArr.add(new ItemLop("Giải tích", "INT2204 1", "Lê Nguyên Khôi", 90));
-//        itemArr.add(new ItemLop("Tối ưu hoá", "INT2204 1", "Lê Thu Hà", 90));
+        itemArr.add(new ItemLop("Tin hoc cơ sở 4","12", "INT2204 1", "Lê Nguyên Khôi", 90));
+        itemArr.add(new ItemLop("Cơ nhiệt","12", "INT2204 1", "Đinh Văn Châu", 90));
+        itemArr.add(new ItemLop("Tin học cơ sở 1","12", "INT2204 1", "Lê Nguyên Khôi", 90));
+        itemArr.add(new ItemLop("Xác suất thống kê","12", "INT2204 1", "Lê Phê Đô", 90));
+        itemArr.add(new ItemLop("Tin nâng cao","12", "INT2204 1", "Lê Nguyên Khôi", 90));
+        itemArr.add(new ItemLop("Lập trình hướng đối tượng","12", "INT2204 1", "Lê Nguyên Khôi", 90));
+        itemArr.add(new ItemLop("Thiết kế giao diện người dùng","12", "INT2204 1", "Nguyễn Thị Nhật Thanh", 90));
+        itemArr.add(new ItemLop("Giải tích","12", "INT2204 1", "Lê Nguyên Khôi", 90));
+        itemArr.add(new ItemLop("Tối ưu hoá","12", "INT2204 1", "Lê Thu Hà", 90));
 //        requestLopHoc(uid, KEY_LOP_MON_HOC, itemArr);
         lopMonHocAdt = new LopAdapter(mContext);
         lopMonHocAdt.setItemArr(itemArr);
@@ -181,7 +179,7 @@ public class LopFragment extends Fragment implements AdapterView.OnItemClickList
 
             @Override
             public void onResponse(String response) {
-                Log.d(TAG, "Get lop hoc Response: " + response.toString());
+                Log.i(TAG, "Get lop hoc Response: " + response.toString());
 //                hideDialog();
                 swipeRefresh.setRefreshing(false);
                 try {
