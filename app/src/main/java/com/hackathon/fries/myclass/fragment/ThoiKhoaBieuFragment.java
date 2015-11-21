@@ -20,6 +20,7 @@ import android.widget.Toast;
 
 import com.hackathon.fries.myclass.R;
 import com.hackathon.fries.myclass.adapter.TableSubjectAdapter;
+import com.hackathon.fries.myclass.dialog.PopupComments;
 import com.hackathon.fries.myclass.models.ItemLopMonHoc;
 
 import java.util.List;
@@ -60,6 +61,8 @@ public class ThoiKhoaBieuFragment extends Fragment implements AdapterView.OnItem
         ItemLopMonHoc item = adapter.getItem(position);
         if (item==null) {
             Toast.makeText(mContext, "Trống", Toast.LENGTH_SHORT).show();
+            PopupComments pop = new PopupComments(mContext);
+            pop.showPopupComments(view);
             return;
         }
         showDialogInfo(item);
