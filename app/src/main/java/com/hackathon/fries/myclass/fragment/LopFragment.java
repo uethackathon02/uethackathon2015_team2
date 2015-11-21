@@ -54,7 +54,7 @@ public class LopFragment extends Fragment implements AdapterView.OnItemClickList
     public static final int LOP_KHOA_HOC = 2;
     public static final int NHOM = 3;
 
-    public static final String KEY_LOP_MON_HOC = "lopmonhoc";
+    public static final String KEY_LOP_MON_HOC = "classSubject";
     public static final String KEY_LOP_KHOA_HOC = "class_xes";
     public static final String KEY_NHOM = "nhom";
 
@@ -190,17 +190,23 @@ public class LopFragment extends Fragment implements AdapterView.OnItemClickList
                     if (!error) {
                         JSONObject lopHoc = jObj.getJSONObject("group");
                         String id = lopHoc.getString("id");
-//                        String idKhoa = lopKhoaHoc.getString("idKhoa");
+                        String idLop = lopHoc.getString("maLMH");
                         String nameLop = lopHoc.getString("name");
                         String baseLop = lopHoc.getString("base");
                         int soSV = lopHoc.getInt("soSV");
 
                         Log.i(TAG, "id: " + id);
-//                        Log.i(TAG, "idKhoa: " + idKhoa);
+                        Log.i(TAG, "idLop: " + idLop);
                         Log.i(TAG, "name lop: " + nameLop);
                         Log.i(TAG, "so sv: " + soSV);
 
-                        itemArr.add(new ItemLop(nameLop, id, "", "", soSV));
+                        JSONObject jsonGiangVien = lopHoc.getJSONObject("teacher");
+                        String idGiangVien = jsonGiangVien.getString("id");
+                        String nameGiangVien = jsonGiangVien.getString("name");
+                        String emailGiangVien = jsonGiangVien.getString("email");
+                        String typeGiangVien = jsonGiangVien.getString("type");
+
+                        itemArr.add(new ItemLop(nameLop, id, idLop, nameGiangVien, soSV));
 
                         Toast.makeText(mContext, "lay lop hoc thành công!", Toast.LENGTH_LONG).show();
 
