@@ -89,11 +89,13 @@ public class TimeLineAdapter extends RecyclerView.Adapter<AbstactHolder> {
             itemPostHolder.getTxtCountLike().setText(itemTimeLine.getLike() + " cám ơn");//
             itemPostHolder.getTxtCountComment().setText(itemTimeLine.getItemComments().size() + " bình luận");//
 
+            if(itemTimeLine.getItemComments().size() > 0){
+                itemPostHolder.getTxtNameLastPost().setText(
+                        itemTimeLine.getItemComments().get(itemTimeLine.getItemComments().size() - 1).getName());
+                itemPostHolder.getTxtCommentLastPost().setText(
+                        itemTimeLine.getItemComments().get(itemTimeLine.getItemComments().size() - 1).getContent());
+            }
 
-            itemPostHolder.getTxtNameLastPost().setText(
-                    itemTimeLine.getItemComments().get(itemTimeLine.getItemComments().size() - 1).getName());
-            itemPostHolder.getTxtCommentLastPost().setText(
-                    itemTimeLine.getItemComments().get(itemTimeLine.getItemComments().size() - 1).getContent());
         } else {
             Log.i(TAG,"by xong");
                // ItemWritePostHolder itemWritePostHolder = (ItemWritePostHolder) abstactHolder;

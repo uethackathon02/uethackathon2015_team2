@@ -47,7 +47,7 @@ public class TimelineFragment extends Fragment implements SwipeRefreshLayout.OnR
     private Context mainContext;
     //    private ListView lvTimeline;
     private TimeLineAdapter mAdapter;
-    private ArrayList<ItemTimeLine> itemPostArr = new ArrayList<>();
+    private ArrayList<ItemTimeLine> itemPostArr;
     //    private ProgressDialog pLog;
     private RecyclerView mRecyclerView;
     private SwipeRefreshLayout swipeRefresh;
@@ -61,7 +61,7 @@ public class TimelineFragment extends Fragment implements SwipeRefreshLayout.OnR
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         root = inflater.inflate(R.layout.fragment_timeline, null);
         mainContext = getActivity();
-
+        itemPostArr = new ArrayList<>();
         //dialog
 //        pLog = new ProgressDialog(mainContext);
 //        pLog.setCancelable(false);
@@ -102,19 +102,22 @@ public class TimelineFragment extends Fragment implements SwipeRefreshLayout.OnR
         handler.postAtTime(new Runnable() {
             public void run() {
                 Log.i(TAG, "wait");
-                if (itemPostArr.size() == 0){
+                if (itemPostArr.size() == 0) {
                     TimelineFragment.this.onDetach();
                     Toast.makeText(mainContext, "Chưa có bài đăng nào", Toast.LENGTH_LONG).show();
                 }
                 mRecyclerView = (RecyclerView) root.findViewById(R.id.recycler);
                 final LinearLayoutManager linearLayoutManager = new LinearLayoutManager(mainContext);
                 mRecyclerView.setLayoutManager(linearLayoutManager);
-
+                //ItemTimeLine item =
+                //itemPostArr.add(item);
                 mAdapter = new TimeLineAdapter(itemPostArr, mainContext);
-
                 mRecyclerView.setAdapter(mAdapter);
+
             }
         }, 2000);
+
+        Log.i(TAG, "SIZE " + itemPostArr.size());
         return root;
     }
 
