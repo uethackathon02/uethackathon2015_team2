@@ -19,6 +19,7 @@ import com.hackathon.fries.myclass.adapter.CommentAdapter;
  */
 public class PopupComments {
     private PopupWindow popupComment;
+    private View rootView;
     private Context mContext;
 
     public PopupComments(Context context){
@@ -28,8 +29,8 @@ public class PopupComments {
     public void showPopupComments(View view){
         LayoutInflater layoutInflater = (LayoutInflater)mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
-        final View rootView = layoutInflater.inflate(R.layout.popup_comment, null,false);
-        rootView.setAnimation(AnimationUtils.loadAnimation(mContext, R.anim.anim_show_item_listview));
+        rootView = layoutInflater.inflate(R.layout.popup_comment, null,false);
+        rootView.setAnimation(AnimationUtils.loadAnimation(mContext, R.anim.anim_slide_in_bottom));
 
         ListView listView = (ListView)  rootView.findViewById(R.id.listCommentPopup);
         CommentAdapter adapter = new CommentAdapter(mContext);
@@ -50,10 +51,21 @@ public class PopupComments {
         // make it outside touchable to dismiss the popup window
         popupComment.setOutsideTouchable(true);
 
-        popupComment.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
+        popupComment.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_MODE_CHANGED);
+
+        setOnDismissPopup();
 
         // show the popup at bottom of the screen and set some margin at bottom ie,
         popupComment.showAtLocation(view, Gravity.LEFT | Gravity.TOP, 0, 0);
+    }
+
+    private void setOnDismissPopup(){
+        popupComment.setOnDismissListener(new PopupWindow.OnDismissListener() {
+            @Override
+            public void onDismiss() {
+                rootView.setAnimation(AnimationUtils.loadAnimation(mContext, R.anim.anim_slide_out_bottom));
+            }
+        });
     }
 
 }
