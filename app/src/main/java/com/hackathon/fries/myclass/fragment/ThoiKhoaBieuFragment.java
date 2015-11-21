@@ -61,8 +61,6 @@ public class ThoiKhoaBieuFragment extends Fragment implements AdapterView.OnItem
         ItemLopMonHoc item = adapter.getItem(position);
         if (item==null) {
             Toast.makeText(mContext, "Trống", Toast.LENGTH_SHORT).show();
-            PopupComments pop = new PopupComments(mContext);
-            pop.showPopupComments(view);
             return;
         }
         showDialogInfo(item);

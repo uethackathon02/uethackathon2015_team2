@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import com.hackathon.fries.myclass.R;
 import com.hackathon.fries.myclass.appmanager.AppManager;
+import com.hackathon.fries.myclass.dialog.PopupComments;
 import com.hackathon.fries.myclass.dialog.ViewDialog;
 
 import org.w3c.dom.Text;
@@ -22,7 +23,7 @@ public class ItemPostHolder extends AbstactHolder {
         imgAvatar = (ImageView) itemView.findViewById(R.id.imgAvatar);
         txtTitle = (TextView) itemView.findViewById(R.id.txtTitle);
         txtContent = (TextView) itemView.findViewById(R.id.tv_content);
-        imgAvatarLastPost = (ImageView) itemView.findViewById(R.id.ivAvaComment);
+        imgAvatarLastPost = (ImageView) itemView.findViewById(R.id.imgAvaComment);
         txtNameLastPost = (TextView) itemView.findViewById(R.id.txtUserName);
 
         txtCommentLastPost = (TextView) itemView.findViewById(R.id.txtContentComment);
@@ -45,25 +46,28 @@ public class ItemPostHolder extends AbstactHolder {
         btnComment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ViewDialog viewDialog = new ViewDialog();
-                viewDialog.showDialog((Activity) AppManager.getInstance().getMainContext(),"abcd");
+                showPopupComments(v);
             }
         });
         txtCommentLastPost.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ViewDialog viewDialog = new ViewDialog();
-                viewDialog.showDialog((Activity) AppManager.getInstance().getMainContext(),"abcd");
+                showPopupComments(v);
             }
         });
         txtNameLastPost.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ViewDialog viewDialog = new ViewDialog();
-                viewDialog.showDialog((Activity) AppManager.getInstance().getMainContext(),"abcd");
+                showPopupComments(v);
             }
         });
     }
+
+    private void showPopupComments(View view){
+        PopupComments pop = new PopupComments(AppManager.getInstance().getMainContext());
+        pop.showPopupComments(view);
+    }
+
     private ImageView imgAvatar;
     private TextView txtTitle;
     private TextView txtContent;
