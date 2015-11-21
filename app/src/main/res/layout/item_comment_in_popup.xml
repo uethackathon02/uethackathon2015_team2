@@ -38,10 +38,9 @@
 
     </LinearLayout>
 
-    <RatingBar
-        android:id="@+id/rateComment"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_gravity="center"
-        android:numStars="1" />
+    <CheckBox
+        android:id="@+id/check_comment"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_gravity="top|right" />
 </LinearLayout>

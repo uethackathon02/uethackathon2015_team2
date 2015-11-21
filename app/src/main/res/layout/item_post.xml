@@ -36,12 +36,11 @@
                 android:textColor="#000000"
                 android:textSize="20dp" />
 
-            <RatingBar
+            <CheckBox
                 android:id="@+id/rate_post"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:layout_gravity="center"
-                android:numStars="1" />
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top|right" />
         </TableRow>
 
         <TextView
@@ -77,7 +76,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="22dp"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="2dp"
             android:orientation="horizontal">
 
             <TextView
@@ -108,7 +107,7 @@
 
         <LinearLayout
             android:layout_width="fill_parent"
-            android:layout_height="35dp"
+            android:layout_height="25dp"
             android:background="#ffffff"
             android:orientation="horizontal"
             android:weightSum="1">
@@ -138,6 +137,6 @@
     </LinearLayout>
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="10dp"
+        android:layout_height="5dp"
         android:background="#f0f0f0" />
 </LinearLayout>
