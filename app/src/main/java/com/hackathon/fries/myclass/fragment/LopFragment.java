@@ -132,6 +132,7 @@ public class LopFragment extends Fragment implements AdapterView.OnItemClickList
         requestLopHoc(uid, KEY_LOP_MON_HOC, itemArr);
         lopMonHocAdt = new LopAdapter(mContext);
         lopMonHocAdt.setItemArr(itemArr);
+        AppManager.getInstance().setArrItemLopMonHoc(itemArr);
     }
 
     private void initLopKhoaHoc() {
@@ -141,6 +142,7 @@ public class LopFragment extends Fragment implements AdapterView.OnItemClickList
         requestLopHoc(uid, KEY_LOP_KHOA_HOC, itemArr);
         lopKhoaHocAdt = new LopAdapter(mContext);
         lopKhoaHocAdt.setItemArr(itemArr);
+        AppManager.getInstance().setArrItemLopKhoaHoc(itemArr);
     }
 
     private void initNhom() {
@@ -149,6 +151,7 @@ public class LopFragment extends Fragment implements AdapterView.OnItemClickList
 //        requestLopHoc(uid, KEY_NHOM, itemArr);
         nhomAdt = new LopAdapter(mContext);
         nhomAdt.setItemArr(itemArr);
+
     }
 
     public void showLopMonHoc() {

@@ -104,7 +104,7 @@ public class TimelineFragment extends Fragment implements SwipeRefreshLayout.OnR
                 Log.i(TAG, "wait");
                 if (itemPostArr.size() == 0){
                     TimelineFragment.this.onDetach();
-                    Toast.makeText(mainContext, "Không load được bài đăng", Toast.LENGTH_LONG).show();
+                    Toast.makeText(mainContext, "Chưa có bài đăng nào", Toast.LENGTH_LONG).show();
                 }
                 mRecyclerView = (RecyclerView) root.findViewById(R.id.recycler);
                 final LinearLayoutManager linearLayoutManager = new LinearLayoutManager(mainContext);
