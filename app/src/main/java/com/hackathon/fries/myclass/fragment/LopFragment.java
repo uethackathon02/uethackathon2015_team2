@@ -62,6 +62,7 @@ public class LopFragment extends Fragment implements AdapterView.OnItemClickList
     private String uid;
     private String currentDBKey;
 
+    public static int positionItemClick = 0;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -115,6 +116,7 @@ public class LopFragment extends Fragment implements AdapterView.OnItemClickList
 //        Toast.makeText(mContext, "ok", Toast.LENGTH_LONG).show();
         MainActivity mainActivity = (MainActivity) mContext;
 
+        LopFragment.positionItemClick = position;
         ItemLop item = (ItemLop) parent.getAdapter().getItem(position);
         mainActivity.goToTimeLine(item.getIdData(), currentAdapter);
     }
