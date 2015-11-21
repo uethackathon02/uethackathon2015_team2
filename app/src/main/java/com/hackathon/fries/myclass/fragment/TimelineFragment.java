@@ -99,7 +99,6 @@ public class TimelineFragment extends Fragment {
                 return true;
             }
         });
-
     }
 
     public void initData() {
