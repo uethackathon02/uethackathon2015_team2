@@ -49,8 +49,9 @@ public class ThoiKhoaBieuFragment extends Fragment implements AdapterView.OnItem
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        if (position==-1) return;
-        showDialogInfo(adapter.getItem(position));
+        ItemLopMonHoc item = adapter.getItem(position);
+        if (item==null) return;
+        showDialogInfo(item);
     }
 
     private void showDialogInfo(ItemLopMonHoc item){

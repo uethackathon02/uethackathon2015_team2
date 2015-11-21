@@ -89,6 +89,7 @@ public class TableSubjectAdapter extends BaseAdapter{
 
     @Override
     public ItemLopMonHoc getItem(int position) {
+        if (listSubjectInTable[position]==-1) return null;
         return listSubject.get(listSubjectInTable[position]);
     }
 
