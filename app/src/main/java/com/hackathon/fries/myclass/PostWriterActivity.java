@@ -30,7 +30,7 @@ import java.util.Map;
 
 public class PostWriterActivity extends AppCompatActivity {
 
-    private static final String TAG = "PostWriteActivity";
+    private static final String TAG = "PostWriterActivity";
     private ProgressDialog pDialog;
 
     @Override
@@ -97,6 +97,7 @@ public class PostWriterActivity extends AppCompatActivity {
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+                hideDialog();
                 Log.i(TAG, "Post error: " + error.getMessage());
                 Toast.makeText(getApplicationContext(), error.getMessage(),
                         Toast.LENGTH_LONG).show();
