@@ -47,12 +47,14 @@
     <RelativeLayout
         android:id="@+id/rl_image"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true">
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/iv_avatarlopmonhoc"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
             app:civ_fill_color="@android:color/holo_green_dark"
