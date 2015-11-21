@@ -1,54 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:fitsSystemWindows="true"
-    tools:context="com.hackathon.fries.myclass.PostWriterActivity">
+    android:layout_height="wrap_content"
+    android:padding="10dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:padding="10dp">
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/title_post2"
-            android:textSize="25dp" />
+            android:textSize="25dp"
+            android:text="@string/title_post2"/>
 
         <EditText
             android:id="@+id/edt_titlePost"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="wrap_content"
             android:ems="50"
             android:inputType="textMultiLine" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/title_content2"
-            android:textSize="20dp" />
+            android:textSize="20dp"
+            android:text="@string/title_content2"/>
 
         <EditText
             android:id="@+id/edt_contentPost"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:layout_marginTop="10dp"
+            android:layout_height="200dp"
             android:ems="50"
-            android:gravity="top|left"
-            android:inputType="textMultiLine"
-            android:minHeight="100dp" />
+            android:inputType="textMultiLine" />
 
+        <RelativeLayout
+            android:id="@+id/Bottom"
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
 
-        <ImageView
-            android:id="@+id/iv_post"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="right"
-            android:layout_marginBottom="15dp"
-            android:layout_marginRight="15dp"
-            android:src="@mipmap/ic_action" />
+            <ImageView
+                android:id="@+id/iv_post"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:src="@mipmap/ic_action" />
+        </RelativeLayout>
+
     </LinearLayout>
 </RelativeLayout>
