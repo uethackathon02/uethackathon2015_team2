@@ -152,8 +152,9 @@ public class LoginActivity extends Activity {
                         String lop = user.getString("lop");
                         String mssv = user.getString("mssv");
                         String type = user.getString("type");
+                        String name = user.getString("name");
 
-                        String name = "Không tên";
+//                        String name = "Không tên";
 //                        String lop = "K58CLC";
 //                        String mssv = "13020285";
 //                        String type = "Sinh viên";

@@ -88,40 +88,6 @@ public class TimelineFragment extends Fragment implements SwipeRefreshLayout.OnR
         mAdapter = new TimeLineAdapter(itemPostArr, mainContext);
 
         mRecyclerView.setAdapter(mAdapter);
-
-//        mRecyclerView.setOnScrollListener(new RecyclerView.OnScrollListener() {
-//            @Override
-//            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
-//                // TODO Auto-generated method stub
-//                super.onScrolled(recyclerView, dx, dy);
-//            }
-//
-//            @Override
-//            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
-//                // TODO Auto-generated method stub
-//                //super.onScrollStateChanged(recyclerView, newState);
-//                int firstPos = linearLayoutManager.findFirstCompletelyVisibleItemPosition();
-//                if (firstPos > 0) {
-//                    swipeRefresh.setEnabled(false);
-//                } else {
-//                    swipeRefresh.setEnabled(true);
-//                }
-//            }
-//        });
-
-//        mRecyclerView.setOnTouchListener(new View.OnTouchListener() {
-//            @Override
-//            public boolean onTouch(View v, MotionEvent event) {
-//                Toast.makeText(mainContext, "da nhan", Toast.LENGTH_LONG).show();
-//                switch (event.getAction()) {
-//                    case MotionEvent.ACTION_UP:
-//                        ViewDialog mDialog = new ViewDialog();
-//                        mDialog.showDialog((Activity) mainContext, "ok");
-//                        break;
-//                }
-//                return true;
-//            }
-//        });
     }
 
     public void initData() {
@@ -142,7 +108,7 @@ public class TimelineFragment extends Fragment implements SwipeRefreshLayout.OnR
                 break;
         }
         itemPostArr = new ArrayList<>();
-//        requestPost(idLop, keyLopType, itemPostArr);
+        requestPost(idLop, keyLopType, itemPostArr);
         setDemoData();
 //        new RequestPSot().execute();
 
