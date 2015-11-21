@@ -4,6 +4,8 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
@@ -100,6 +102,9 @@ public class TableSubjectAdapter extends BaseAdapter{
         if (view == null){
             view = lf.inflate(R.layout.item_subject_in_table, null);
         }
+
+        Animation myAni = AnimationUtils.loadAnimation(mContext, R.anim.anim_show_item_subject);
+        view.startAnimation(myAni);
 
         if (listSubjectInTable[position] == -1) return view;
 
