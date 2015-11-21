@@ -73,6 +73,7 @@ public class TimeLineAdapter extends RecyclerView.Adapter<AbstactHolder> {
             //itemPostHolder.getImgAvatar();
             ItemPostHolder itemPostHolder = (ItemPostHolder) abstactHolder;
             final ItemTimeLine itemTimeLine = itemArr.get(position - 1);
+            itemPostHolder.setListComment(itemTimeLine.getItemComments());
             try {
                 ImageView i = itemPostHolder.getImgAvatar();
                 Bitmap bitmap = BitmapFactory.decodeStream((InputStream) new URL(itemTimeLine.getAva()).getContent());

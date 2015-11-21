@@ -1,7 +1,6 @@
 package com.hackathon.fries.myclass.holder;
 
-import android.app.Activity;
-import android.support.v7.widget.RecyclerView;
+import android.content.ClipData;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -10,14 +9,16 @@ import android.widget.TextView;
 import com.hackathon.fries.myclass.R;
 import com.hackathon.fries.myclass.appmanager.AppManager;
 import com.hackathon.fries.myclass.dialog.PopupComments;
-import com.hackathon.fries.myclass.dialog.ViewDialog;
+import com.hackathon.fries.myclass.models.ItemComment;
 
-import org.w3c.dom.Text;
+import java.util.ArrayList;
 
 /**
  * Created by Tdh4vn on 11/21/2015.
  */
 public class ItemPostHolder extends AbstactHolder {
+    private ArrayList<ItemComment> listComment = new ArrayList<>();
+
     public ItemPostHolder(View itemView) {
         super(itemView);
         imgAvatar = (ImageView) itemView.findViewById(R.id.imgAvatar);
@@ -34,6 +35,10 @@ public class ItemPostHolder extends AbstactHolder {
         btnComment = (Button) itemView.findViewById(R.id.btnComment);
         createListener();
 
+    }
+
+    public void setListComment(ArrayList<ItemComment> arr){
+        listComment = arr;
     }
 
     private void createListener(){
@@ -64,7 +69,7 @@ public class ItemPostHolder extends AbstactHolder {
     }
 
     private void showPopupComments(View view){
-        PopupComments pop = new PopupComments(AppManager.getInstance().getMainContext());
+        PopupComments pop = new PopupComments(AppManager.getInstance().getMainContext(), listComment);
         pop.showPopupComments(view);
     }
 

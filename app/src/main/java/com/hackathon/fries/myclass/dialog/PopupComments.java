@@ -13,6 +13,9 @@ import android.widget.PopupWindow;
 
 import com.hackathon.fries.myclass.R;
 import com.hackathon.fries.myclass.adapter.CommentAdapter;
+import com.hackathon.fries.myclass.models.ItemComment;
+
+import java.util.ArrayList;
 
 /**
  * Created by TMQ on 21-Nov-15.
@@ -21,9 +24,13 @@ public class PopupComments {
     private PopupWindow popupComment;
     private View rootView;
     private Context mContext;
+    private CommentAdapter adapter;
 
-    public PopupComments(Context context){
+
+
+    public PopupComments(Context context, ArrayList<ItemComment> arr){
         mContext = context;
+        adapter = new CommentAdapter(mContext, arr);
     }
 
     public void showPopupComments(View view){
@@ -33,7 +40,7 @@ public class PopupComments {
         rootView.setAnimation(AnimationUtils.loadAnimation(mContext, R.anim.anim_slide_in_bottom));
 
         ListView listView = (ListView)  rootView.findViewById(R.id.listCommentPopup);
-        CommentAdapter adapter = new CommentAdapter(mContext);
+
         listView.setAdapter(adapter);
 
         // get device size
