@@ -133,14 +133,7 @@
                 android:textColor="#c0bdbd"
                 android:textSize="13dp" />
         </LinearLayout>
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/CanXoa">
-            <include
-                layout="@layout/item_comment_in_popup">
-            </include>
-        </LinearLayout>
+
     </LinearLayout>
     <TextView
         android:layout_width="match_parent"

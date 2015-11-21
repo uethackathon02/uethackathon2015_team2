@@ -4,6 +4,7 @@ import android.content.ClipData;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.hackathon.fries.myclass.R;
@@ -33,6 +34,7 @@ public class ItemPostHolder extends AbstactHolder {
         txtCountComment = (TextView) itemView.findViewById(R.id.txtCountComment);
         btnTks = (Button) itemView.findViewById(R.id.btnTks);
         btnComment = (Button) itemView.findViewById(R.id.btnComment);
+        layoutParent = (LinearLayout) itemView.findViewById(R.id.CanXoa);
         createListener();
 
     }
@@ -72,7 +74,7 @@ public class ItemPostHolder extends AbstactHolder {
         PopupComments pop = new PopupComments(AppManager.getInstance().getMainContext(), listComment);
         pop.showPopupComments(view);
     }
-
+    private LinearLayout layoutParent;
     private ImageView imgAvatar;
     private TextView txtTitle;
     private TextView txtContent;
@@ -167,5 +169,17 @@ public class ItemPostHolder extends AbstactHolder {
 
     public void setBtnComment(Button btnComment) {
         this.btnComment = btnComment;
+    }
+
+    public ArrayList<ItemComment> getListComment() {
+        return listComment;
+    }
+
+    public LinearLayout getLayoutParent() {
+        return layoutParent;
+    }
+
+    public void setLayoutParent(LinearLayout layoutParent) {
+        this.layoutParent = layoutParent;
     }
 }
