@@ -7,7 +7,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="5dp"
         android:background="#ffffff"
         android:orientation="horizontal">
 
@@ -26,12 +26,12 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="20dp"
-            android:text="Bạn muốn nói gì ..."
+            android:text="@string/question_post"
             android:textAppearance="?android:attr/textAppearanceMedium" />
     </LinearLayout>
 
     <View
-        android:layout_width="fill_parent"
-        android:layout_height="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
         android:background="#e1e1e1" />
 </LinearLayout>
