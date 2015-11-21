@@ -60,7 +60,7 @@ public class PostWriterActivity extends AppCompatActivity {
     }
 
     private void initViews() {
-        edtTitlePost = (EditText) findViewById(R.id.edt_titlepost);
+        edtTitlePost = (EditText) findViewById(R.id.edt_titlePost);
         edtContentPost = (EditText) findViewById(R.id.edt_contentPost);
         ivPost = (ImageView) findViewById(R.id.iv_post);
 
