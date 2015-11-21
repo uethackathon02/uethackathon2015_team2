@@ -40,7 +40,7 @@
 
     <string name="thoi_khoa_bieu">Thời khóa biểu</string>
     <string name="title_activity_write_post">WritePostActivity</string>
-    <string name="title_activity_post_writer">PostWriterActivity</string>
+    <string name="title_activity_post_writer">Đăng bài</string>
     <string name="author_name">Trần Đức Hùng</string>
     <string name="title_post">[Hỏi thông tin bài tập]</string>
     <string name="content_post">Mình muốn hỏi bài tập JAVA hôm nay phải làm những gì thế ạ? Mình cám ơn nhiều :)</string>
