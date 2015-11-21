@@ -17,7 +17,7 @@ public class ItemWritePostHolder extends AbstactHolder {
     public ItemWritePostHolder(View itemView) {
         super(itemView);
         imgAvatar = (ImageView) itemView.findViewById(R.id.avatar);
-        txtView = (EditText) itemView.findViewById(R.id.textView2);
+        txtView = (TextView) itemView.findViewById(R.id.textView2);
     }
     @Override
     public int getViewHolderType() {
