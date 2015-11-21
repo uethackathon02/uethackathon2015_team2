@@ -4,6 +4,8 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
@@ -87,6 +89,7 @@ public class TableSubjectAdapter extends BaseAdapter{
 
     @Override
     public ItemLopMonHoc getItem(int position) {
+        if (listSubjectInTable[position]==-1) return null;
         return listSubject.get(listSubjectInTable[position]);
     }
 
@@ -102,6 +105,9 @@ public class TableSubjectAdapter extends BaseAdapter{
         }
 
         if (listSubjectInTable[position] == -1) return view;
+
+        Animation myAni = AnimationUtils.loadAnimation(mContext, R.anim.anim_show_item_subject);
+        view.startAnimation(myAni);
 
         ItemLopMonHoc item = listSubject.get(listSubjectInTable[position]);
 
