@@ -45,7 +45,7 @@ import java.util.Map;
 /**
  * Created by TMQ on 21-Nov-15.
  */
-public class PopupComments {
+public class PopupComments{
     private static final String TAG = "PopupComments";
     private PopupWindow popupComment;
     private View rootView;
@@ -57,6 +57,8 @@ public class PopupComments {
     private ImageView btnSend;
     private ListView listView;
 
+    private int haveCommentIsVoted = -1;
+
     // Dem so lan gui binh luan
     private int countNumberSend = 0;
 
@@ -64,6 +66,15 @@ public class PopupComments {
     public PopupComments(Context context, ArrayList<ItemComment> arr) {
         mContext = context;
         adapter = new CommentAdapter(mContext, arr);
+
+        adapter.setOnVoteListener(new CommentAdapter.OnVoteListener() {
+            @Override
+            public void onVote(boolean isVote) {
+                if (isVote) haveCommentIsVoted = 1;
+                else haveCommentIsVoted = 0;
+            }
+        });
+
         pDialog = new ProgressDialog(context);
     }
 
@@ -150,7 +161,7 @@ public class PopupComments {
             @Override
             public void onDismiss() {
                 rootView.setAnimation(AnimationUtils.loadAnimation(mContext, R.anim.anim_slide_out_bottom));
-                mListener.onDismiss(countNumberSend);
+                mListener.onDismiss(countNumberSend, haveCommentIsVoted);
             }
         });
     }
@@ -259,6 +270,6 @@ public class PopupComments {
     }
 
     public interface OnDismissListener {
-        public void onDismiss(int numberSend);
+        public void onDismiss(int numberSend, int vote);
     }
 }

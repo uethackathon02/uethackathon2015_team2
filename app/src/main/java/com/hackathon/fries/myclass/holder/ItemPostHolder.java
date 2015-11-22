@@ -7,6 +7,7 @@ import android.os.Message;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -39,6 +40,7 @@ public class ItemPostHolder extends AbstactHolder implements PopupComments.OnDis
     private static final String TAG = "ItemPostHolder";
     private ArrayList<ItemComment> listComment = new ArrayList<>();
     private Context mContext;
+    private CheckBox checkBox;
     private ProgressDialog pDialog;
 
     public ItemPostHolder(View itemView) {
@@ -59,6 +61,9 @@ public class ItemPostHolder extends AbstactHolder implements PopupComments.OnDis
         txtCountComment = (TextView) itemView.findViewById(R.id.txtCountComment);
         btnTks = (Button) itemView.findViewById(R.id.btnTks);
         btnComment = (Button) itemView.findViewById(R.id.btnComment);
+
+        checkBox    = (CheckBox)    itemView.findViewById(R.id.ckbVote);
+        checkBox.setClickable(false);
 
         createListener();
 
@@ -273,10 +278,20 @@ public class ItemPostHolder extends AbstactHolder implements PopupComments.OnDis
 
 
     @Override
-    public void onDismiss(int numberSend) {
+    public void onDismiss(int numberSend, int vote) {
         String text = txtCountComment.getText().toString();
         int currentNumComment = Integer.parseInt(text.substring(0, text.indexOf(" ")));
         txtCountComment.setText((currentNumComment+numberSend) + " bình luận");
+
+        // Kiem tra Vote
+        switch (vote){
+            case 0:
+                checkBox.setChecked(false);
+                break;
+            case 1:
+                checkBox.setChecked(true);
+                break;
+        }
     }
 
     public ArrayList<ItemComment> getListComment() {

@@ -65,6 +65,7 @@ public class CommentAdapter extends BaseAdapter {
         listComments.add(cmt);
     }
 
+
     @Override
     public int getCount() {
         return listComments.size();
@@ -91,7 +92,7 @@ public class CommentAdapter extends BaseAdapter {
         ImageView img       = (ImageView)   view.findViewById(R.id.imgAvaComment);
         TextView txtUser    = (TextView)    view.findViewById(R.id.txtUserName);
         TextView txtContent = (TextView)    view.findViewById(R.id.txtContentComment);
-        CheckBox checkBox   = (CheckBox)    view.findViewById(R.id.check_comment);
+        final CheckBox checkBox   = (CheckBox)    view.findViewById(R.id.check_comment);
 
         txtUser.setText(item.getName());
         txtContent.setText(item.getContent());
@@ -114,6 +115,8 @@ public class CommentAdapter extends BaseAdapter {
                 Toast.makeText(mContext, "Câu trả lời của sinh viên được ủng hộ", Toast.LENGTH_LONG).show();
 
                 postVoteByTeacher(listComments.get(position).getIdComment(), uid);
+
+                mListener.onVote(checkBox.isChecked());
 
                 buttonView.setClickable(false);
             }
@@ -223,5 +226,16 @@ public class CommentAdapter extends BaseAdapter {
         if (pDialog.isShowing()) {
             pDialog.hide();
         }
+    }
+
+    //----------------------- Interface -------------------------------------------
+    private OnVoteListener mListener;
+
+    public void setOnVoteListener(OnVoteListener listener){
+        mListener = listener;
+    }
+
+    public interface OnVoteListener{
+        public void onVote(boolean isVote);
     }
 }
