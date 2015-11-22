@@ -18,8 +18,7 @@
         android:paddingBottom="5dp"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
-        android:paddingTop="5dp"
-        android:id="@+id/LinearLayoutParent">
+        android:paddingTop="5dp">
 
         <TableRow
             android:layout_width="match_parent"
@@ -32,6 +31,7 @@
                 android:layout_weight="1"
                 android:gravity="left"
                 android:shadowColor="#000000"
+                android:textAllCaps="true"
                 android:text="@string/title_post"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:textColor="#000000"
@@ -132,14 +132,6 @@
                 android:text="bình luận"
                 android:textColor="#c0bdbd"
                 android:textSize="13dp" />
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/CanXoa">
-            <include
-                layout="@layout/item_comment_in_popup">
-            </include>
         </LinearLayout>
     </LinearLayout>
     <TextView
