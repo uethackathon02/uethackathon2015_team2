@@ -84,17 +84,17 @@ public class TimeLineAdapter extends RecyclerView.Adapter<AbstactHolder> {
 //                e.printStackTrace();
 //            }
             Log.i(TAG, "title" + itemTimeLine.getTitle());
-            itemPostHolder.getTxtTitle().setText(itemTimeLine.getTitle());
+            itemPostHolder.getTxtTitle().setText("[" + itemTimeLine.getTitle() + "]");
             itemPostHolder.getTxtContent().setText(itemTimeLine.getContent());
             itemPostHolder.getTxtCountLike().setText(itemTimeLine.getLike() + " cám ơn");//
             itemPostHolder.getTxtCountComment().setText(itemTimeLine.getItemComments().size() + " bình luận");//
 
-            if(itemTimeLine.getItemComments().size() > 0){
-                itemPostHolder.getTxtNameLastPost().setText(
-                        itemTimeLine.getItemComments().get(itemTimeLine.getItemComments().size() - 1).getName());
-                itemPostHolder.getTxtCommentLastPost().setText(
-                        itemTimeLine.getItemComments().get(itemTimeLine.getItemComments().size() - 1).getContent());
-            }
+//            if(itemTimeLine.getItemComments().size() > 0){
+//                itemPostHolder.getTxtNameLastPost().setText(
+//                        itemTimeLine.getItemComments().get(itemTimeLine.getItemComments().size() - 1).getName());
+//                itemPostHolder.getTxtCommentLastPost().setText(
+//                        itemTimeLine.getItemComments().get(itemTimeLine.getItemComments().size() - 1).getContent());
+//            }
 
         } else {
             Log.i(TAG,"by xong");

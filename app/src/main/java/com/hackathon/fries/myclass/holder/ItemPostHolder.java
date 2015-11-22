@@ -1,6 +1,5 @@
 package com.hackathon.fries.myclass.holder;
 
-import android.content.ClipData;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -24,10 +23,10 @@ public class ItemPostHolder extends AbstactHolder {
         imgAvatar = (ImageView) itemView.findViewById(R.id.imgAvatar);
         txtTitle = (TextView) itemView.findViewById(R.id.txtTitle);
         txtContent = (TextView) itemView.findViewById(R.id.tv_content);
-        imgAvatarLastPost = (ImageView) itemView.findViewById(R.id.imgAvaComment);
-        txtNameLastPost = (TextView) itemView.findViewById(R.id.txtUserName);
-
-        txtCommentLastPost = (TextView) itemView.findViewById(R.id.txtContentComment);
+//        imgAvatarLastPost = (ImageView) itemView.findViewById(R.id.imgAvaComment);
+//        txtNameLastPost = (TextView) itemView.findViewById(R.id.txtUserName);
+//
+//        txtCommentLastPost = (TextView) itemView.findViewById(R.id.txtContentComment);
 
         txtCountLike = (TextView) itemView.findViewById(R.id.txtCountLike);
         txtCountComment = (TextView) itemView.findViewById(R.id.txtCountComment);
@@ -37,11 +36,11 @@ public class ItemPostHolder extends AbstactHolder {
 
     }
 
-    public void setListComment(ArrayList<ItemComment> arr){
+    public void setListComment(ArrayList<ItemComment> arr) {
         listComment = arr;
     }
 
-    private void createListener(){
+    private void createListener() {
         btnTks.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -54,21 +53,21 @@ public class ItemPostHolder extends AbstactHolder {
                 showPopupComments(v);
             }
         });
-        txtCommentLastPost.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showPopupComments(v);
-            }
-        });
-        txtNameLastPost.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showPopupComments(v);
-            }
-        });
+//        txtCommentLastPost.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                showPopupComments(v);
+//            }
+//        });
+//        txtNameLastPost.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                showPopupComments(v);
+//            }
+//        });
     }
 
-    private void showPopupComments(View view){
+    private void showPopupComments(View view) {
         PopupComments pop = new PopupComments(AppManager.getInstance().getMainContext(), listComment);
         pop.showPopupComments(view);
     }
@@ -76,13 +75,14 @@ public class ItemPostHolder extends AbstactHolder {
     private ImageView imgAvatar;
     private TextView txtTitle;
     private TextView txtContent;
-    private ImageView imgAvatarLastPost;
-    private TextView txtNameLastPost;
-    private TextView txtCommentLastPost;
+    //    private ImageView imgAvatarLastPost;
+//    private TextView txtNameLastPost;
+//    private TextView txtCommentLastPost;
     private TextView txtCountLike;
     private TextView txtCountComment;
     private Button btnTks;
     private Button btnComment;
+
     @Override
     public int getViewHolderType() {
         int viewHolderType = 1;
@@ -113,30 +113,30 @@ public class ItemPostHolder extends AbstactHolder {
         this.txtContent = txtContent;
     }
 
-    public ImageView getImgAvatarLastPost() {
-        return imgAvatarLastPost;
-    }
+//    public ImageView getImgAvatarLastPost() {
+//        return imgAvatarLastPost;
+//    }
 
-    public void setImgAvatarLastPost(ImageView imgAvatarLastPost) {
-        this.imgAvatarLastPost = imgAvatarLastPost;
-    }
+//    public void setImgAvatarLastPost(ImageView imgAvatarLastPost) {
+//        this.imgAvatarLastPost = imgAvatarLastPost;
+//    }
 
-    public TextView getTxtNameLastPost() {
-        return txtNameLastPost;
-    }
+//    public TextView getTxtNameLastPost() {
+//        return txtNameLastPost;
+//    }
 
-    public void setTxtNameLastPost(TextView txtNameLastPost) {
-        this.txtNameLastPost = txtNameLastPost;
-    }
+//    public void setTxtNameLastPost(TextView txtNameLastPost) {
+//        this.txtNameLastPost = txtNameLastPost;
+//    }
 
-    public TextView getTxtCommentLastPost() {
-        return txtCommentLastPost;
-    }
-
-    public void setTxtCommentLastPost(TextView txtCommentLastPost) {
-        this.txtCommentLastPost = txtCommentLastPost;
-    }
-
+    //    public TextView getTxtCommentLastPost() {
+//        return txtCommentLastPost;
+//    }
+//
+//    public void setTxtCommentLastPost(TextView txtCommentLastPost) {
+//        this.txtCommentLastPost = txtCommentLastPost;
+//    }
+//
     public TextView getTxtCountLike() {
         return txtCountLike;
     }
