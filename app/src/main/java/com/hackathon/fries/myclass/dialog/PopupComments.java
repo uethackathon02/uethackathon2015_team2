@@ -208,8 +208,7 @@ public class PopupComments{
             public void onErrorResponse(VolleyError error) {
                 hideDialog();
                 Log.i(TAG, "Post error: " + error.getMessage());
-                Toast.makeText(mContext, error.getMessage(),
-                        Toast.LENGTH_LONG).show();
+
             }
         }) {
             @Override

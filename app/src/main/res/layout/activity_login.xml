@@ -15,6 +15,13 @@
         android:paddingLeft="20dp"
         android:paddingRight="20dp" >
 
+        <ImageView
+            android:layout_width="129dp"
+            android:layout_height="133dp"
+            android:id="@+id/imageView3"
+            android:src="@mipmap/big_logo"
+            android:layout_gravity="center_horizontal" />
+
         <EditText
             android:id="@+id/email"
             android:layout_width="fill_parent"

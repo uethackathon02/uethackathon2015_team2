@@ -80,6 +80,13 @@ public class MainActivity extends AppCompatActivity
         }
         initViews();
         initAllFragments();
+        if (getFragmentManager().getBackStackEntryCount() > 0) {
+            getFragmentManager().popBackStack();
+        }
+        //replace fragment moi
+        getFragmentManager().beginTransaction().replace(R.id.container, thoiKhoaBieuFragment).commit();
+        toolbar.setTitle("Thời khoá biểu");
+
     }
 
     private void initViews() {
