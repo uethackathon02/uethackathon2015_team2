@@ -1,9 +1,11 @@
 package com.hackathon.fries.myclass.holder;
 
+import android.content.Context;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.hackathon.fries.myclass.R;
 import com.hackathon.fries.myclass.appmanager.AppManager;
@@ -15,11 +17,14 @@ import java.util.ArrayList;
 /**
  * Created by Tdh4vn on 11/21/2015.
  */
-public class ItemPostHolder extends AbstactHolder {
+public class ItemPostHolder extends AbstactHolder implements PopupComments.OnDismissListener{
     private ArrayList<ItemComment> listComment = new ArrayList<>();
+    private Context mContext;
 
     public ItemPostHolder(View itemView) {
         super(itemView);
+        mContext = itemView.getContext();
+
         imgAvatar = (ImageView) itemView.findViewById(R.id.imgAvatar);
         txtTitle = (TextView) itemView.findViewById(R.id.txtTitle);
         txtContent = (TextView) itemView.findViewById(R.id.tv_content);
@@ -70,6 +75,7 @@ public class ItemPostHolder extends AbstactHolder {
     private void showPopupComments(View view) {
         PopupComments pop = new PopupComments(AppManager.getInstance().getMainContext(), listComment);
         pop.showPopupComments(view);
+        pop.setOnDismissListener(this);
     }
 
     private ImageView imgAvatar;
@@ -167,5 +173,16 @@ public class ItemPostHolder extends AbstactHolder {
 
     public void setBtnComment(Button btnComment) {
         this.btnComment = btnComment;
+    }
+
+
+    //----------------------------------------------
+
+
+    @Override
+    public void onDismiss(int numberSend) {
+        String text = txtCountComment.getText().toString();
+        int currentNumComment = Integer.parseInt(text.substring(0, text.indexOf(" ")));
+        txtCountComment.setText((currentNumComment+numberSend) + " bình luận");
     }
 }

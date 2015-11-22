@@ -55,6 +55,9 @@ public class PopupComments {
     private EditText edtContentCmt;
     private ImageView btnSend;
 
+    // Dem so lan gui binh luan
+    private int countNumberSend = 0;
+
 
     public PopupComments(Context context, ArrayList<ItemComment> arr) {
         mContext = context;
@@ -69,7 +72,7 @@ public class PopupComments {
         rootView = layoutInflater.inflate(R.layout.popup_comment, null, false);
         rootView.setAnimation(AnimationUtils.loadAnimation(mContext, R.anim.anim_slide_in_bottom));
 
-        ListView listView = (ListView) rootView.findViewById(R.id.listCommentPopup);
+        final ListView listView = (ListView) rootView.findViewById(R.id.listCommentPopup);
         listView.setAdapter(adapter);
 
         edtContentCmt = (EditText) rootView.findViewById(R.id.edtComment);
@@ -80,10 +83,16 @@ public class PopupComments {
             public void onClick(View v) {
                 String content = edtContentCmt.getText().toString();
 
+                if (content.equalsIgnoreCase("")) {
+                    Toast.makeText(mContext, "Bình luận rỗng!", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
                 //get user
                 SQLiteHandler db = new SQLiteHandler(mContext);
                 HashMap<String, String> user = db.getUserDetails();
                 String uid = user.get("uid");
+                String name = user.get("name");
 
                 int currentAdapter = AppManager.getInstance().getCurrentAdapter();
                 String currentDBKey = "";
@@ -104,6 +113,12 @@ public class PopupComments {
                 }
 
                 postCmt(currentDBKey, itemTimeLine.get(LopFragment.positionItemClick).getIdPost(), uid, content);
+
+                // Thay doi tren Local
+                countNumberSend ++; // Tang so lan gui binh luan len
+                adapter.addComment(new ItemComment(name, "", content, false));
+                listView.setAdapter(adapter);
+                edtContentCmt.setText("");
             }
         });
 
@@ -135,6 +150,7 @@ public class PopupComments {
             @Override
             public void onDismiss() {
                 rootView.setAnimation(AnimationUtils.loadAnimation(mContext, R.anim.anim_slide_out_bottom));
+                mListener.onDismiss(countNumberSend);
             }
         });
     }
@@ -210,5 +226,17 @@ public class PopupComments {
         if (pDialog.isShowing()) {
             pDialog.hide();
         }
+    }
+
+    // --------------------- Communication -------------------------------------------
+
+    private OnDismissListener mListener;
+
+    public void setOnDismissListener(OnDismissListener listener) {
+        mListener = listener;
+    }
+
+    public interface OnDismissListener {
+        public void onDismiss(int numberSend);
     }
 }
