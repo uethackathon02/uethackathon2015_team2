@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,6 +29,7 @@ public class ItemPostHolder extends AbstactHolder implements PopupComments.OnDis
         imgAvatar = (ImageView) itemView.findViewById(R.id.imgAvatar);
         txtTitle = (TextView) itemView.findViewById(R.id.txtTitle);
         txtContent = (TextView) itemView.findViewById(R.id.tv_content);
+        txtAuthor = (TextView) itemView.findViewById(R.id.tv_name_postauthor);
 //        imgAvatarLastPost = (ImageView) itemView.findViewById(R.id.imgAvaComment);
 //        txtNameLastPost = (TextView) itemView.findViewById(R.id.txtUserName);
 //
@@ -37,6 +39,7 @@ public class ItemPostHolder extends AbstactHolder implements PopupComments.OnDis
         txtCountComment = (TextView) itemView.findViewById(R.id.txtCountComment);
         btnTks = (Button) itemView.findViewById(R.id.btnTks);
         btnComment = (Button) itemView.findViewById(R.id.btnComment);
+
         createListener();
 
     }
@@ -77,10 +80,11 @@ public class ItemPostHolder extends AbstactHolder implements PopupComments.OnDis
         pop.showPopupComments(view);
         pop.setOnDismissListener(this);
     }
-
+    private LinearLayout layoutParent;
     private ImageView imgAvatar;
     private TextView txtTitle;
     private TextView txtContent;
+    private TextView txtAuthor;
     //    private ImageView imgAvatarLastPost;
 //    private TextView txtNameLastPost;
 //    private TextView txtCommentLastPost;
@@ -184,5 +188,25 @@ public class ItemPostHolder extends AbstactHolder implements PopupComments.OnDis
         String text = txtCountComment.getText().toString();
         int currentNumComment = Integer.parseInt(text.substring(0, text.indexOf(" ")));
         txtCountComment.setText((currentNumComment+numberSend) + " bình luận");
+    }
+
+    public ArrayList<ItemComment> getListComment() {
+        return listComment;
+    }
+
+    public LinearLayout getLayoutParent() {
+        return layoutParent;
+    }
+
+    public void setLayoutParent(LinearLayout layoutParent) {
+        this.layoutParent = layoutParent;
+    }
+
+    public TextView getTxtAuthor() {
+        return txtAuthor;
+    }
+
+    public void setTxtAuthor(TextView txtAuthor) {
+        this.txtAuthor = txtAuthor;
     }
 }
