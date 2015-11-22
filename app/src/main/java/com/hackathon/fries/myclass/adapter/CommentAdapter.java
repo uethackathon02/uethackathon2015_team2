@@ -110,15 +110,21 @@ public class CommentAdapter extends BaseAdapter {
         txtContent.setText(item.getContent());
         checkBox.setChecked(item.isVote());
 
+        //get user
+        SQLiteHandler db = new SQLiteHandler(mContext);
+        HashMap<String, String> user = db.getUserDetails();
+        final String uid = user.get("uid");
+        String type = user.get("type");
+
+
+        if (type.equalsIgnoreCase("Sinh Viên") || checkBox.isChecked()){
+            checkBox.setClickable(false);
+        }
+
         checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                Toast.makeText(mContext, "ok k ok  ok", Toast.LENGTH_LONG).show();
-
-                //get user
-                SQLiteHandler db = new SQLiteHandler(mContext);
-                HashMap<String, String> user = db.getUserDetails();
-                String uid = user.get("uid");
+                Toast.makeText(mContext, "Câu trả lời của sinh viên được ủng hộ", Toast.LENGTH_LONG).show();
 
                 postVoteByTeacher(listComments.get(position).getIdComment(), uid);
 
