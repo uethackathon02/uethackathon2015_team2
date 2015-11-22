@@ -158,11 +158,12 @@ public class ThoiKhoaBieuFragment extends Fragment implements AdapterView.OnItem
                         int soTiet  = subject.getInt("soTiet");
                         int soSV    = subject.getInt("soSV");
                         int nhom    = subject.getInt("nhom");
+                        String ddiem= subject.getString("address");
 
                         JSONObject teacher = subject.getJSONObject("teacher");
                         String tenGV    = teacher.getString("name");
 
-                        ItemLopMonHoc item = new ItemLopMonHoc(ten, maLMH, "Dia diem",tenGV, vtri, soTiet, soSV, nhom);
+                        ItemLopMonHoc item = new ItemLopMonHoc(ten, maLMH, ddiem,tenGV, vtri, soTiet, soSV, nhom);
 
                         listSubject.add(item);
 
