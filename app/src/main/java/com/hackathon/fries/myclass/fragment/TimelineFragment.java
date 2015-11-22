@@ -171,7 +171,7 @@ public class TimelineFragment extends Fragment implements SwipeRefreshLayout.OnR
 
                             boolean isConfirm = false;
 
-                            itemPostArr.add(new ItemTimeLine(idAuthorPost, titlePost, nameAuthorPost, "", contentPost, like, isConfirm));
+                            itemPostArr.add(new ItemTimeLine(id, titlePost, nameAuthorPost, "", contentPost, like, isConfirm));
 
                             //Lay mang cac comment
                             //Luu vao 1 arraylist comment
@@ -183,12 +183,22 @@ public class TimelineFragment extends Fragment implements SwipeRefreshLayout.OnR
                                 String idComment = jsonCommentArr.getJSONObject(j).getString("id");
                                 String contentComment = jsonCommentArr.getJSONObject(j).getString("content");
 
-                                JSONObject jsonAuthorComment = jsonCommentArr.getJSONObject(j).getJSONObject("author");
-                                String idAuthorComment = jsonAuthorComment.getString("id");
-                                String nameAuthorComment = jsonAuthorComment.getString("name");
-                                String emailAuthorComment = jsonAuthorComment.getString("email");
-                                String typeAuthorComment = jsonAuthorComment.getString("type");
-                                String mssvAuthorComment = jsonAuthorComment.getString("mssv");
+                                String idAuthorComment = "";
+                                String nameAuthorComment = "";
+                                String emailAuthorComment = "";
+                                String typeAuthorComment = "";
+                                String mssvAuthorComment = "";
+
+                                try{
+                                    JSONObject jsonAuthorComment = jsonCommentArr.getJSONObject(j).getJSONObject("author");
+                                    idAuthorComment = jsonAuthorComment.getString("id");
+                                    nameAuthorComment = jsonAuthorComment.getString("name");
+                                    emailAuthorComment = jsonAuthorComment.getString("email");
+                                    typeAuthorComment = jsonAuthorComment.getString("type");
+                                    mssvAuthorComment = jsonAuthorComment.getString("mssv");
+                                } catch (Exception e){
+                                    continue;
+                                }
 
                                 Log.i(TAG, "comment: " + nameAuthorComment);
                                 Log.i(TAG, "comment: " + emailAuthorComment);
@@ -244,7 +254,7 @@ public class TimelineFragment extends Fragment implements SwipeRefreshLayout.OnR
                     itemTimeLines.add((ItemTimeLine)itemPostArr.get(i));
                 }
             }
-
+            Log.i(TAG, "ItemTimeLine is up to date");
             AppManager.getInstance().setArrItemTimeLine(itemTimeLines);
 //            initViews();
             Log.i(TAG, "ok");
