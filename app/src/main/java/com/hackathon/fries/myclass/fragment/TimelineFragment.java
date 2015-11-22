@@ -194,7 +194,7 @@ public class TimelineFragment extends Fragment implements SwipeRefreshLayout.OnR
 
                                 boolean isVote = jsonCommentArr.getJSONObject(j).getBoolean("confirmed");
 
-                                itemCommentArr.add(new ItemComment(nameAuthorComment, "", contentComment, isVote));
+                                itemCommentArr.add(new ItemComment(idComment, idAuthorComment, nameAuthorComment, "", contentComment, isVote));
 
                             }
                             itemPostArr.get(i).setItemComments(itemCommentArr);

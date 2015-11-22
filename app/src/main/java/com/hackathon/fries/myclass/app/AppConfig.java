@@ -1,7 +1,8 @@
 package com.hackathon.fries.myclass.app;
 
 public class AppConfig {
-
+	//Server vote comment
+	public static final String URL_VOTE_COMMENT = "http://tutran.net/v1/vote";
 	//Server post comment
 	public static final String URL_POST_COMMENT = "http://tutran.net/v1/post/comment";
 	//Server get post and comment
