@@ -100,6 +100,9 @@ public class PopupComments {
                 String currentDBKey = "";
 
                 ArrayList<ItemTimeLine> itemTimeLine = AppManager.getInstance().getArrItemTimeLine();
+                if (itemTimeLine.size() == 0){
+                    Log.i(TAG, "itemTimeLine null");
+                }
                 switch (currentAdapter) {
                     case LopFragment.LOP_MON_HOC:
                         currentDBKey = LopFragment.KEY_LOP_MON_HOC;

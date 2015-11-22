@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
@@ -90,6 +91,14 @@ public class CommentAdapter extends BaseAdapter {
         txtUser.setText(item.getName());
         txtContent.setText(item.getContent());
         checkBox.setChecked(item.isVote());
+
+        checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                Toast.makeText(mContext, "ok k ok  ok", Toast.LENGTH_LONG).show();
+                buttonView.setClickable(false);
+            }
+        });
 
         Bitmap bitmap = getImageBitmapFromUrl(item.getAvaUrl());
         if (bitmap!= null) img.setImageBitmap(bitmap);

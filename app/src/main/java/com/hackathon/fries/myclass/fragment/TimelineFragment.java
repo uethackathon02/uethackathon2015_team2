@@ -22,6 +22,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.hackathon.fries.myclass.R;
+import com.hackathon.fries.myclass.appmanager.AppManager;
 import com.hackathon.fries.myclass.models.ItemBase;
 import com.hackathon.fries.myclass.models.ItemComment;
 import com.hackathon.fries.myclass.models.ItemTimeLine;
@@ -236,6 +237,15 @@ public class TimelineFragment extends Fragment implements SwipeRefreshLayout.OnR
 //            mAdapter = new TimeLineAdapter(itemPostArr, mainContext);
 //            mRecyclerView.setAdapter(mAdapter);
 //            Log.i(TAG, "setadapter thanh cong");
+            ArrayList<ItemTimeLine> itemTimeLines = new ArrayList<>();
+
+            for (int i = 0; i < itemPostArr.size(); i++) {
+                if (i != 0){
+                    itemTimeLines.add((ItemTimeLine)itemPostArr.get(i));
+                }
+            }
+
+            AppManager.getInstance().setArrItemTimeLine(itemTimeLines);
 //            initViews();
             Log.i(TAG, "ok");
 
