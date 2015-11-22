@@ -63,7 +63,7 @@ public class TimelineFragment extends Fragment implements SwipeRefreshLayout.OnR
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         root = inflater.inflate(R.layout.fragment_timeline, null);
         mainContext = getActivity();
-        itemPostArr = new ArrayList<>();
+        itemPostArr = new ArrayList<ItemBase>();
         //dialog
 //        pLog = new ProgressDialog(mainContext);
 //        pLog.setCancelable(false);
@@ -167,13 +167,10 @@ public class TimelineFragment extends Fragment implements SwipeRefreshLayout.OnR
                             String typeAuthorPost = jsonAuthorPost.getString("type");
                             String mssvAuthorPost = jsonAuthorPost.getString("mssv");
 
-                            Log.i(TAG, "post: " + nameAuthorPost);
-                            Log.i(TAG, "post: " + emailAuthorPost);
-                            Log.i(TAG, "post: " + typeAuthorPost);
 
                             boolean isConfirm = false;
 
-                            itemPostArr.add(new ItemTimeLine(titlePost, nameAuthorPost, "", contentPost, like, isConfirm));
+                            itemPostArr.add(new ItemTimeLine(idAuthorPost, titlePost, nameAuthorPost, "", contentPost, like, isConfirm));
 
                             //Lay mang cac comment
                             //Luu vao 1 arraylist comment
@@ -205,7 +202,6 @@ public class TimelineFragment extends Fragment implements SwipeRefreshLayout.OnR
                             mAdapter.notifyDataSetChanged();
                         }
 
-                        //Toast.makeText(mainContext, "Lay thong tin bai post thanh cong", Toast.LENGTH_LONG).show();
 
 
                         Message msg = new Message();
@@ -221,7 +217,6 @@ public class TimelineFragment extends Fragment implements SwipeRefreshLayout.OnR
             public void onErrorResponse(VolleyError error) {
 //                hideDialog();
                 swipeRefresh.setRefreshing(false);
-                Toast.makeText(mainContext, "Không có bài đăng nào.", Toast.LENGTH_LONG).show();
             }
         }) {
             @Override

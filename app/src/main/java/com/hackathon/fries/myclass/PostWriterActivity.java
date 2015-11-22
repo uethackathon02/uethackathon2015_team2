@@ -103,11 +103,6 @@ public class PostWriterActivity extends AppCompatActivity {
 
     private void postPost(final String uid, final String group, final String base, final String title, final String content) {
         showDialog();
-//        Log.i(TAG, uid);
-//        Log.i(TAG, group);
-//        Log.i(TAG, base);
-//        Log.i(TAG, title);
-//        Log.i(TAG, content);
 
         StringRequest request = new StringRequest(Request.Method.POST, AppConfig.URL_POST_POST,
                 new Response.Listener<String>() {

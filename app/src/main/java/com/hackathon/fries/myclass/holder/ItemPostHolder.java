@@ -29,6 +29,7 @@ public class ItemPostHolder extends AbstactHolder implements PopupComments.OnDis
         imgAvatar = (ImageView) itemView.findViewById(R.id.imgAvatar);
         txtTitle = (TextView) itemView.findViewById(R.id.txtTitle);
         txtContent = (TextView) itemView.findViewById(R.id.tv_content);
+        txtAuthor = (TextView) itemView.findViewById(R.id.tv_name_postauthor);
 //        imgAvatarLastPost = (ImageView) itemView.findViewById(R.id.imgAvaComment);
 //        txtNameLastPost = (TextView) itemView.findViewById(R.id.txtUserName);
 //
@@ -38,7 +39,7 @@ public class ItemPostHolder extends AbstactHolder implements PopupComments.OnDis
         txtCountComment = (TextView) itemView.findViewById(R.id.txtCountComment);
         btnTks = (Button) itemView.findViewById(R.id.btnTks);
         btnComment = (Button) itemView.findViewById(R.id.btnComment);
-        layoutParent = (LinearLayout) itemView.findViewById(R.id.CanXoa);
+
         createListener();
 
     }
@@ -83,6 +84,7 @@ public class ItemPostHolder extends AbstactHolder implements PopupComments.OnDis
     private ImageView imgAvatar;
     private TextView txtTitle;
     private TextView txtContent;
+    private TextView txtAuthor;
     //    private ImageView imgAvatarLastPost;
 //    private TextView txtNameLastPost;
 //    private TextView txtCommentLastPost;
@@ -198,5 +200,13 @@ public class ItemPostHolder extends AbstactHolder implements PopupComments.OnDis
 
     public void setLayoutParent(LinearLayout layoutParent) {
         this.layoutParent = layoutParent;
+    }
+
+    public TextView getTxtAuthor() {
+        return txtAuthor;
+    }
+
+    public void setTxtAuthor(TextView txtAuthor) {
+        this.txtAuthor = txtAuthor;
     }
 }
