@@ -65,19 +65,6 @@ public class CommentAdapter extends BaseAdapter {
         listComments.add(cmt);
     }
 
-//    private void getDataComments(){
-//        listComments = new ArrayList<>();
-//
-//        listComments.add(new ItemComment("Nguyễn Tiến Minh", "http://www2.uet.vnu.edu.vn/coltech/sites/uet_logo.png",
-//                "Minh chó. Minh chó. Minh chó. Minh chó. Minh chó. Minh chó. Minh chó. Minh chó. ", false));
-//        listComments.add(new ItemComment("Nguyễn Tiến Minh", "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/VNU.logo.jpg/100px-VNU.logo.jpg",
-//                "Minh chó. Minh chó. Minh chó. Minh chó. Minh chó. Minh chó. Minh chó. Minh chó. ", true));
-//        listComments.add(new ItemComment("Nguyễn Tiến Minh", "http://www2.uet.vnu.edu.vn/coltech/sites/uet_logo.png",
-//                "Minh chó. Minh chó. Minh chó. Minh chó. Minh chó. Minh chó. Minh chó. Minh chó. ", false));
-//        listComments.add(new ItemComment("Nguyễn Tiến Minh", "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/VNU.logo.jpg/100px-VNU.logo.jpg",
-//                "Minh chó. Minh chó. Minh chó. Minh chó. Minh chó. Minh chó. Minh chó. Minh chó. ", true));
-//    }
-
     @Override
     public int getCount() {
         return listComments.size();
