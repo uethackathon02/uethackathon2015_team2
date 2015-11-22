@@ -203,7 +203,7 @@ public class CommentAdapter extends BaseAdapter {
             }
         };
 
-        AppController.getInstance().addToRequestQueue(request, "post");
+        AppController.getInstance().addToRequestQueue(request, "post comment");
     }
 
     private Handler mHandler = new Handler(){
